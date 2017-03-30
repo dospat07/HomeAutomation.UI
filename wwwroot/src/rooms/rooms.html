@@ -34,25 +34,24 @@
         </div>
     </form>
    
-   <!--</div id="tableRooms">
     <table class='table'>
       <thead>
         <tr>
-          <th v-for="title in columns" @click='sortBy(title)'>
-            {{title}}
+          <th v-for="column in columns" @click='bindingSource.sortBy(column.name)'>
+            {{column.header}}
 
-            <span v-if="sortColumn===title" class="glyphicon" :class="sortOrder[title]>0 ?'glyphicon-sort-by-attributes':'glyphicon-sort-by-attributes-alt'"></span>
+            <span v-if="bindingSource.sortColumn===column.name" class="glyphicon" :class="bindingSource.sortOrder[column.name]>0 ?'glyphicon-sort-by-attributes':'glyphicon-sort-by-attributes-alt'"></span>
           </th>
         </tr>
       </thead>
       <tbody>
-        <tr v-for="row in dataItems">
-          <td v-for="column in columns" >
-            {{row[column]}}
+        <tr v-for="row in  bindingSource.dataItems" :class="row === bindingSource.current?'active':''">
+          <td v-for="column in columns"  @click="bindingSource.current=row">
+            {{row[column.name]}}
           </td>
         </tr>
       </tbody>
     </table>
-  </div>-->
- <vue-table v-on:selectedChanged="selectedRoomChanged" :filter="search" :data-source="rooms"    :columns='columns' :column-titles='columns'  :selected='room'page-size="15" />
+  
+ <!--<vue-table v-on:selectedChanged="selectedRoomChanged" :filter="search" :data-source="rooms"    :columns='columns' :column-titles='columns'  :selected='room'page-size="15" />-->
 </div>

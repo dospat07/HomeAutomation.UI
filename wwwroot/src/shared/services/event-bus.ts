@@ -10,14 +10,6 @@ export interface Dictionary {
     [key: string]: Array<Callback>;
 }
 
-// export type EventType =
-
-//         'RoomCreated'|
-//         'RoomDeleted'|
-//         'RoomUpdated'|
-//         'TemperatureUpdated'|
-//         'Error'
-
  export const EventType = stringEnum([
     'RoomCreated',
     'RoomDeleted',
