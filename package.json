@@ -12,6 +12,7 @@
   "devDependencies": {
     "@types/jquery": "^2.0.41",
     "@types/node": "^7.0.8",
+    "@types/signalr": "^2.2.33",
     "babel-core": "^6.24.0",
     "babel-loader": "^6.4.0",
     "babel-preset-es2015": "^6.24.0",
@@ -29,7 +30,10 @@
   "dependencies": {
     "bootstrap": "^3.3.7",
     "jquery": "^3.1.1",
+    "signalr": "^2.2.1",
     "vue": "^2.2.4",
-    "vue-class-component": "^5.0.0"
+    "vue-class-component": "^5.0.0",
+    "vue-property-decorator": "^4.0.0",
+    "vue-router": "^2.3.0"
   }
 }

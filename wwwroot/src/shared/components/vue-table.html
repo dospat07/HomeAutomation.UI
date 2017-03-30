@@ -1,0 +1,28 @@
+ 
+  <div>   
+    <div v-if="pageCount>1">
+      <button @click="prevPage">prev</button>
+      <span>page {{page}} of {{pageCount}}</span>
+      <button @click="nextPage">next</button>
+
+    </div>
+    <table class='table'>
+      <thead>
+        <tr>
+          <th v-for="title in columnTitles" @click='sortBy(title)'>
+            {{title}}
+
+            <span v-if="sortColumn===title" class="glyphicon" :class="sortOrder[title]>0 ?'glyphicon-sort-by-attributes':'glyphicon-sort-by-attributes-alt'"></span>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="row in dataItems">
+          <td v-for="column in columns" @click="clickCell(row,column)">
+            {{row[column]}}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+ 
