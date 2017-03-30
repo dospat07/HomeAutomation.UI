@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+
+     "allowSyntheticDefaultImports": true,
+    "lib": [
+      "dom",
+      "es5"
+    ],
+    "outDir": "./dist/",
+    "sourceMap": true,
+    "noImplicitAny": true,
+    "module": "es2015",
+    "moduleResolution": "node",
+    "target": "es5",
+    "jsx": "react",
+    "allowJs": true,
+    "experimentalDecorators": true,
+    "types": ["jquery","node"],
+    "typeRoots": [
+      "./node_modules/@types"
+    ]
+  }
+}
