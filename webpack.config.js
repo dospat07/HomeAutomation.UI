@@ -1,6 +1,7 @@
 var path = require('path');
 var webpack = require('webpack');
 module.exports = {
+    devtool: "source-map",
     context: path.join(__dirname, './wwwroot/src/'),
     entry: './main.ts',
     output: {
@@ -10,12 +11,12 @@ module.exports = {
     },
     module: {
         rules: [
-            { test: /\.js$/, loader: 'babel-loader', query: { presets: ['es2015'] } },
+          
             { test: /\.vue$/, loader: 'vue-loader' },
             { test: /\.tsx?$/, loader: 'ts-loader', exclude: /node_modules/, },
             // { test: /\.tsx?$/, loader: 'vue-ts-loader' }
             { test: /\.html$/, loader: "html-loader" },
-
+            {  test: /\.js$/,  loader: "source-map-loader" , enforce: 'pre'},
         ],
 
 
@@ -37,15 +38,15 @@ module.exports = {
     },
 
     plugins: [
-        // new webpack.optimize.UglifyJsPlugin({ minimize: true }),
+       // new webpack.optimize.UglifyJsPlugin({ minimize: true }),
         new webpack.ProvidePlugin(
             {
                 jQuery: 'jquery',
                 $: 'jquery',
                 jquery: 'jquery',
                 'window.$': 'jquery',
-                'window.jQuery' : 'jquery'
-                
+                'window.jQuery': 'jquery'
+
             })
     ]
 };

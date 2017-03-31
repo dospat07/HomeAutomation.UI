@@ -3,6 +3,7 @@ export class Room {
     NodeAddress: string;
     ID: number;
     AirCondition: string;
-    Temperature:number
+    Temperature:number;
+    Time:Date;
 };
 

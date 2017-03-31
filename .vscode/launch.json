@@ -5,19 +5,23 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "type": "node",
+             "trace": true,
+            "type": "chrome",
             "request": "launch",
-            "name": "Launch Program",
-            "program": "${workspaceRoot}\\index.js",
-            "outFiles": []
+            "name": "Debug Chrome File",
+            "file": "${workspaceRoot}\\wwwroot\\index.html",
+            "webRoot": "${workspaceRoot}/wwwroot/src",
+            "sourceMaps": true
         },
+        
         {
-            "type": "node",
-            "request": "attach",
-            "name": "Attach to Process",
-            "address": "localhost",
-            "port": 5858,
-            "outFiles": []
+            "trace": true,
+            "name": "Debug Chrome",
+            "type": "chrome",
+            "request": "launch",
+            "url": "http://localhost:8080/index.html",
+            "webRoot": "${workspaceRoot}/wwwroot/src",
+            "sourceMaps": true
         }
     ]
 }

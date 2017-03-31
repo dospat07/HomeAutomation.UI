@@ -26,6 +26,7 @@ export default class Rooms extends Vue {
         { name: 'AirCondition', header: 'Conditioner' },
         { name: 'Temperature', header: 'Temperature' },
         { name: 'NodeAddress', header: 'NodeAddress' },
+        // { name: 'Time', header: 'Time' }
 
     ];
 
@@ -49,7 +50,7 @@ export default class Rooms extends Vue {
         console.log("Rooms constructor");
     }
 
-    private  onBindingSourceCurrentItemChanged(room: Room) {
+    private onBindingSourceCurrentItemChanged(room: Room) {
         this.selectedRoom = room
     }
     private onSearch(data: string) {

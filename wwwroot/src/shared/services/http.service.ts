@@ -54,7 +54,9 @@ export default class HttpService<T >
 
     public getArray(items: Array<T>):void {
 
-        this.ajax('GET', (data: any) => { data.forEach((element: T) => { items.push(element) }) });
+        this.ajax('GET', (data: any) => { 
+            console.log(data);
+            data.forEach((element: T) => { items.push(element) }) });
     }
     public get(success:SuccessCallback,error?:ErrorCallback,data?:any):void {
 
