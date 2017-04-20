@@ -25,11 +25,11 @@ Vue.config.devtools = true;
 
 })
 
-export default class Manu extends Vue {
+export default class Menu extends Vue {
 
     constructor() {
         super();
-        console.clear();
+      
         console.log("menu");
     }
     private eventBus:EventBus = new EventBus();

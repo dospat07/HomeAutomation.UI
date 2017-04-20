@@ -3,9 +3,10 @@
     "allowSyntheticDefaultImports": true,
     "lib": [
       "dom",
-      "es6"
+      "es6",
+      "es2015.promise"
     ],
-    "outDir": "/wwwroot/built/",
+  
     "sourceMap": true,
     "noImplicitAny": true,
     "module": "es2015",

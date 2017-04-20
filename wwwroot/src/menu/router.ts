@@ -5,7 +5,7 @@ import Rooms from '../rooms/rooms.component'
 
 Vue.use(VueRouter);
 
-const Foo = { template: '<div><a href="#/Rooms/1">Go To Room 1</a></div>' }
+const Foo = { template: '<div><router-link to="/rooms/1">go to room 1</router-link></div>' }
  
 
 const routes = [
@@ -17,6 +17,7 @@ const routes = [
 // You can pass in additional options here, but let's
 // keep it simple for now.
 export const Router = new VueRouter({
+    mode: 'history',
     routes // short for routes: routes
 })
  

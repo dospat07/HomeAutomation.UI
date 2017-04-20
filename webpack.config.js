@@ -1,6 +1,11 @@
 var path = require('path');
 var webpack = require('webpack');
 module.exports = {
+    devServer: {
+        historyApiFallback: {
+            index: 'index.html'
+        }
+    },
     devtool: "source-map",
     context: path.join(__dirname, './wwwroot/src/'),
     entry: './main.ts',
@@ -11,12 +16,12 @@ module.exports = {
     },
     module: {
         rules: [
-          
+
             { test: /\.vue$/, loader: 'vue-loader' },
             { test: /\.tsx?$/, loader: 'ts-loader', exclude: /node_modules/, },
             // { test: /\.tsx?$/, loader: 'vue-ts-loader' }
             { test: /\.html$/, loader: "html-loader" },
-            {  test: /\.js$/,  loader: "source-map-loader" , enforce: 'pre'},
+            { test: /\.js$/, loader: "source-map-loader", enforce: 'pre' },
         ],
 
 

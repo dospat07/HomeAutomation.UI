@@ -1,0 +1,18 @@
+<nav aria-label="Page navigation"  v-if="totalPages>1">
+  <ul class="pagination">
+    <li>
+      <a href="#" aria-label="Previous" @click.prevent="prev">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    <li v-for="pageNumber in totalPages"  :class="pageNumber == currentPage?'active':''">
+      <a href="#" @click.prevent="page(pageNumber)">{{pageNumber}} </a>
+    </li>
+
+    <li>
+      <a href="#" aria-label="Next" @click.prevent="next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+  </ul>
+</nav>

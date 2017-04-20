@@ -11,11 +11,17 @@ export default class BindingSource<T extends Entity> {
 
     sortOrder: any = {};
     sortColumn: string = '';
-    position:number = -1;
-    public currentItemChanged: Event = new Event();
+    position: number = -1;
+    public currentChanged: Event = new Event();
     private _current: T = null;
-    constructor(source: T[], private key: string) {
-        this.dataSource = source;
+    constructor(private key: string, source?: T[]) {
+        if (source === undefined) {
+            this.dataSource = new Array<T>();
+        }
+        else {
+            this.dataSource = source;
+        }
+
     }
 
     public sortBy(column: string) {
@@ -30,26 +36,35 @@ export default class BindingSource<T extends Entity> {
             let tempa = a[column];
             let tempb = b[column];
             return (tempa === tempb ? 0 : tempa > tempb ? 1 : -1) * this.sortOrder[column];
-            // a = a[column];
-            // b = b[column];
-            // return (a === b ? 0 : a > b ? 1 : -1) * this.sortOrder[column];
+
         });
     };
 
     public set current(item: T) {
         this._current = item;
-        this.position =  this.dataItems.findIndex(o=>o === item);
-        console.log(this.position);
-        this.currentItemChanged.raise(item);
+        if (item === null){
+            this.position = -1;
+        }else{
+            this.position = this.dataItems.findIndex(o => o[this.key] === item[this.key]);
+        }
+        this.currentChanged.raise(item);
     }
 
-    public get current():T{
+    public get current(): T {
         return this._current;
     }
 
+    public moveTo(id: any) {
+        let item = <T>this.dataSource.find(o => o[this.key] === id);
+        // let i = this.rooms.findIndex(o => o.ID === id);
+        //  this.bindingSource.current = this.rooms[i];
+        if (item != undefined)
+            this.current = item;
+
+    }
     public get dataItems() {
 
-      
+
         var items = [];
         if (this.filter === '') {
             items = this.dataSource;
@@ -97,7 +112,7 @@ export default class BindingSource<T extends Entity> {
             this.dataSource.splice(index, 1);
         }
     }
-    public findFirst(predicate:{(value:T):boolean} ){
+    public findFirst(predicate: { (value: T): boolean }) {
         let index = this.dataItems.findIndex(predicate);
         return this.dataItems[index];
     }
