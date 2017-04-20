@@ -72,7 +72,7 @@ export default class Rooms extends Vue {
     
     private onBindingSourceCurrentChanged(room: Room) {
 
-        this.dialog.showMessage(room.Name,room.NodeAddress);
+      //  this.dialog.showMessage(room.Name,room.NodeAddress);
         this.selectedRoom = room;
     }
     private onSearch(data: string) {
