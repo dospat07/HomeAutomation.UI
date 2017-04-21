@@ -2,6 +2,7 @@ import Vue from 'vue'
 import { Component, Watch } from 'vue-property-decorator'
 import VueRouter from 'vue-router'
 import Rooms from '../rooms/rooms.component'
+import Remote from '../remote/remote.component'
 
 Vue.use(VueRouter);
 
@@ -9,7 +10,7 @@ const Foo = { template: '<div><router-link to="/rooms/1">go to room 1</router-li
  
 
 const routes = [
-    { path: '/foo', component: Foo },
+    { path: '/Remote', component: Remote },
     { path: '/Rooms/:roomID?', component: Rooms }
 ]
 

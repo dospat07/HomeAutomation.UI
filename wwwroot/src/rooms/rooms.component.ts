@@ -3,7 +3,7 @@ import { Component, Watch } from 'vue-property-decorator'
 import EventBus, { EventType } from '../shared/services/event-bus';
 import { Room } from './room'
 import HttpService from '../shared/services/http.service'
-import { RoomTemperature } from './room-temperture'
+// import { RoomTemperature } from './room-temperture'
 import BindingSource from '../shared/services/binding-source'
 import Paginator from '../shared/services/paginator'
 import VuePaginator from '../shared/components/vue-paginator'
@@ -13,10 +13,10 @@ import MessageDialog from '../shared/services/message-dialog'
 @Component({
     name: 'Rooms',
     template: require("./rooms.html"),
-    components: { 
+    components: {
         'paginator': VuePaginator,
-        'v-dialog' :VueDialog
-     }
+        'v-dialog': VueDialog
+    }
 
 })
 
@@ -30,9 +30,9 @@ export default class Rooms extends Vue {
 
     bindingSource = new BindingSource<Room>('ID');
     paginator: Paginator<Room>;
-    dialog:MessageDialog = new MessageDialog();
-    
-    
+    dialog: MessageDialog = new MessageDialog();
+
+
 
     columns = [
         { name: 'Name', header: 'Room' },
@@ -47,9 +47,11 @@ export default class Rooms extends Vue {
 
     constructor() {
         super();
-        this.http = new HttpService<Room>("http://localhost:5001/api/Rooms",{ handle(status: number, statusText: string) {
-        console.log(status,' ',statusText);
-    }});
+        this.http = new HttpService<Room>("http://localhost:5001/api/Rooms", {
+            handle(status: number, statusText: string) {
+                console.log(status, ' ', statusText);
+            }
+        });
         this.eventBus.on(EventType.RoomCreated, data => this.bindingSource.add(data));
         this.eventBus.on(EventType.RoomDeleted, data => this.bindingSource.delete(Number(data)));
         this.eventBus.on(EventType.RoomUpdated, data => this.bindingSource.update(data));
@@ -66,13 +68,13 @@ export default class Rooms extends Vue {
             this.bindingSource.moveTo(Number(this.$route.params.roomID));
         });
         console.log("Rooms constuctor");
-        
+
     }
- 
-    
+
+
     private onBindingSourceCurrentChanged(room: Room) {
 
-      //  this.dialog.showMessage(room.Name,room.NodeAddress);
+        //  this.dialog.showMessage(room.Name,room.NodeAddress);
         this.selectedRoom = room;
     }
     private onSearch(data: string) {
@@ -95,7 +97,7 @@ export default class Rooms extends Vue {
         this.http.delete(this.room);
     }
 
-    
+
     public get selectedRoom() {
 
         return this.room;
