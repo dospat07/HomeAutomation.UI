@@ -1,0 +1,20 @@
+<form class="form-horizontal">
+   
+
+        <div class="form-group ">
+            <label for="user" class="col-sm-2 control-label">Username</label>
+            <div class="col-sm-5">
+                <input type="text" class="form-control" id="user" placeholder="Username" v-model="user">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="password" class="col-sm-2  control-label">Password</label>
+            <div class="col-sm-5">
+                <input type="password" class="form-control" id="password" placeholder="Password" v-model="password">
+
+            </div>
+        </div>
+        <div  class="col-sm-offset-2">   <button type="button"  class="btn btn-default" @click="logon">Login</button></div>
+     
+     <v-dialog :dialog="dialog"></v-dialog>
+</form>

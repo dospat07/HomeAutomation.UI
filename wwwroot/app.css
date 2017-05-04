@@ -1,8 +1,18 @@
-input[type="radio"] {
+
+/*@import url('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css');*/
+
+.addon-form-group input[type="radio"] {
     display: none;
 }
-
+ 
+.addon-form-group input[type="checkbox"] {
+    display: none;
+} 
 .addon-form-group {
-    padding-left: 15px !important;
+    /*padding-left: 15px !important;*/
     padding-right: 15px !important;
+}
+
+.margin-top{
+    margin-top:10px;
 }

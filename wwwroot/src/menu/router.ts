@@ -2,7 +2,8 @@ import Vue from 'vue'
 import { Component, Watch } from 'vue-property-decorator'
 import VueRouter from 'vue-router'
 import Rooms from '../rooms/rooms.component'
-import Remote from '../remote/remote.component'
+import Remote from '../dashboard/remote.component'
+import Login from '../login/login.component'
 
 Vue.use(VueRouter);
 
@@ -10,8 +11,10 @@ const Foo = { template: '<div><router-link to="/rooms/1">go to room 1</router-li
  
 
 const routes = [
-    { path: '/Remote', component: Remote },
-    { path: '/Rooms/:roomID?', component: Rooms }
+   
+    { path: '/Rooms/:roomID?', component: Rooms },
+    { path: '/', component: Remote},
+    { path: '/Login', component: Login}
 ]
 
 // 3. Create the router instance and pass the `routes` option

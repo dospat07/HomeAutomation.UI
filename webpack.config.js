@@ -6,7 +6,7 @@ module.exports = {
             index: 'index.html'
         }
     },
-    devtool: "source-map",
+  //  devtool: "source-map",
     context: path.join(__dirname, './wwwroot/src/'),
     entry: './main.ts',
     output: {

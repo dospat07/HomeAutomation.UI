@@ -12,9 +12,9 @@
                 </div>
                 <div class="modal-footer">
 
-                    <button type="button" class="btn btn-default" @click="OK">OK</button>
-                    <button type="button" class="btn btn-default" @click="yes">Yes</button>
-                    <button type="button" class="btn btn-default" @click="no">No</button>
+                    <button v-if="btnOK" type="button" class="btn btn-default" @click="OK">OK</button>
+                    <button v-if="btnYesNo" type="button" class="btn btn-default" @click="yes">Yes</button>
+                    <button v-if="btnYesNo" type="button" class="btn btn-default" @click="no">No</button>
                   
 
                 </div>

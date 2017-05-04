@@ -1,9 +1,9 @@
 
 
-export interface HttpErrorHandle{
-     handle(code:number,text:string):void  
-   
-}
+// export interface HttpErrorHandle {
+//     handle(code: number, text: string): void
+
+// }
 export interface SuccessCallback {
     (data: any): void;
 }
@@ -13,44 +13,57 @@ export interface ErrorCallback {
 }
 
 
+
+
 export default class HttpService<T>
 {
-    constructor(private url: string,private errorHandle:HttpErrorHandle) {
+    // constructor(private url: string, private errorHandle: HttpErrorHandle) {
 
-    }
+    // }
+constructor(private url?: string,private beforeSend?:{(xhr:JQueryXHR):void})
+{
 
-    public ajaxAsync(method: string, data?: any): Promise<{}> {
-        const promise = new Promise((resolve, reject) => {
-            let contentType = 'application/json';
-            $.ajax({
-                contentType: contentType,
-                method: method,
-                url: this.url,
-                data: data,
-            }).
-                done(result => resolve(result)).
-                fail(error => this.errorHandle.handle(error.status,error.statusText));
-        });
-        promise.then(
-            (ok) => console.log('Fulfilled ', ok),
-            (error) => console.log('Rejected ', error)
-        );
+}
 
-        return promise;
-    }
-    private ajax(method: string, successCallback?: SuccessCallback, errorCallback?: ErrorCallback, data?: any) {
-        let contentType = 'application/json';
-        //   if (method==="GET") 
-        //   contentType = '';
+    
+    // public ajaxAsync(method: string, data?: any): Promise<{}> {
+    //     const promise = new Promise((resolve, reject) => {
+    //         let contentType = 'application/json';
+    //         $.ajax({
+    //             contentType: contentType,
+    //             method: method,
+    //             url: this.url,
+    //             data: data,
+    //         }).
+    //             done(result => resolve(result)).
+    //             fail(error => this.errorHandle.handle(error.status, error.statusText));
+    //     });
+    //     promise.then(
+    //         (ok) => console.log('Fulfilled ', ok),
+    //         (error) => console.log('Rejected ', error)
+    //     );
 
+    //     return promise;
+    // }
+
+
+   public request( url:string,method: string, successCallback?: SuccessCallback, errorCallback?: ErrorCallback, data?: any,contentType = 'application/json') {
+       
+     
         $.ajax({
 
             contentType: contentType,
             method: method,
-            url: this.url,
+            url: url,
             data: data,
 
-            //  beforeSend: (xhr)=>{xhr.setRequestHeader('content-type','application/json');},
+            beforeSend: (xhr) => {
+                if (this.beforeSend!=undefined){
+                    this.beforeSend(xhr);
+                }
+              
+
+            },
             success: (result) => {
                 if (successCallback !== undefined && successCallback !== null) {
                     successCallback(result);
@@ -58,6 +71,7 @@ export default class HttpService<T>
 
             },
             error: (result) => {
+
 
                 if (errorCallback !== undefined && errorCallback !== null) {
 
@@ -72,37 +86,42 @@ export default class HttpService<T>
     }
 
 
-    public getArray(items: Array<T>): void {
+    // public getArray(items: Array<T>): void {
 
-        this.ajax('GET', (data: any) => {
+    //     this.ajax('GET', (data: any) => {
 
-            data.forEach((element: T) => { items.push(element) })
-        });
-    }
+    //         data.forEach((element: T) => { items.push(element) })
+    //     });
+    // }
 
     public getItems(onAdd: { (item: T): void }, done: { (): void }): void {
+     
+       this.request(this.url,'GET', (data: any) => {
 
-        this.ajax('GET', (data: any) => {
-
-            data.forEach((element: T) => { onAdd(element) });
-            done();
+             data.forEach((element: T) => { onAdd(element) });
+             done();
         });
     }
+
+
     public get(success: SuccessCallback, error?: ErrorCallback, data?: any): void {
 
-        this.ajax('GET', success, error, data);
+       
+        this.request(this.url,'GET', success, error, data);
     }
 
-    public add(item: T, success?: SuccessCallback, error?: ErrorCallback) {
-        this.ajax("POST", success, error, JSON.stringify(item));
+    public add(item:any, success?: SuccessCallback, error?: ErrorCallback) {
+        this.request(this.url,"POST", success, error, JSON.stringify(item));
     }
 
-    public update(item: T, success?: SuccessCallback, error?: ErrorCallback) {
-        this.ajax("PUT", success, error, JSON.stringify(item));
+    public update(item:any, success?: SuccessCallback, error?: ErrorCallback) {
+        this.request(this.url,"PUT", success, error, JSON.stringify(item));
     }
 
-    public delete(item: T, success?: SuccessCallback, error?: ErrorCallback) {
+    public delete(item:any, success?: SuccessCallback, error?: ErrorCallback) {
 
-        this.ajax("DELETE", success, error, JSON.stringify(item));
+        this.request(this.url,"DELETE", success, error, JSON.stringify(item));
     }
+
+  
 }

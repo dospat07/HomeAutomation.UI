@@ -1,4 +1,4 @@
-<div>
+<div  style="min-width: 600px">
     <nav class="navbar navbar-default">
         <div class="container-fluid">
             <div class="navbar-header">
@@ -8,20 +8,28 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-                <a class="navbar-brand" href="#">{{brand}}</a>
+                <!--<a class="navbar-brand" href="/">{{brand}}</a>-->
             </div>
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
+                     
+                       
                     <li>
-                        <router-link to="/Remote">Remote</router-link>
+                        <router-link to="/">Dashboard</router-link>
+                        
                     </li>
                     <li>
+                       
                         <router-link to="/Rooms">Rooms</router-link>
+                    </li>
+                     <li>
+                       
+                        <router-link to="/Login">Login</router-link>
                     </li>
 
                 </ul>
-                <form class="navbar-form navbar-left" role="search">
+                <!--<form class="navbar-form navbar-left" role="search">
                     <div class="form-group">
                         <input type="text" class="form-control" placeholder="Search" v-model="search"  v-on:keyup="submit">
                     </div>
@@ -29,7 +37,7 @@
                 </form>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="#">Link</a></li>
-                </ul>
+                </ul>-->
             </div>
         </div>
     </nav>

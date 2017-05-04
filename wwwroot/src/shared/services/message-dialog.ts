@@ -1,16 +1,18 @@
-import  {Dialog} from '../components/vue-dialog'
-
+import  {Dialog,Buttons} from './dialog'
+export {Buttons}
 export default class MessageDialog implements Dialog {
         
     title:string;
     message:string;
     show:boolean = false;
-
-    public showMessage(title:string,message:string){
+    result:boolean;
+    buttons:Buttons
+    public showMessage(title:string,message:string,buttons:Buttons){
         this.title  = title;
         this.message = message;
         this.show = true;
-       
+        this.buttons = buttons;
+    
          
     }
 }

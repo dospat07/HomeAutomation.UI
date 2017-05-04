@@ -16,7 +16,10 @@ export interface Dictionary {
     'RoomUpdated',
     'TemperatureUpdated',
     'Error',
-    'Search'
+    'Search',
+    'ScheduleCreated',
+    'ScheduleDeleted'
+
 ])
  
  export type EventType = keyof typeof EventType;
@@ -27,7 +30,7 @@ export default class EventBus {
     private static callbacks: Dictionary = {};
 
     public constructor() {
-        console.log("EventBus ")
+        // console.log("EventBus ")
     }
 
     public on(event: EventType, callback: Callback): void {

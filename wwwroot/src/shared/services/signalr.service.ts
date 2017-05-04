@@ -20,6 +20,9 @@ export default class SignalRService {
         });
     };
 
+    public get conectionID():string{
+        return  this.connection.id;
+    }
     public start() {
 
         // atempt connection, and handle errors

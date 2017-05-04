@@ -29,14 +29,9 @@ export default class Menu extends Vue {
 
     constructor() {
         super();
-      
-        console.log("menu");
     }
     private eventBus:EventBus = new EventBus();
-    public submit (){
-        
-        this.eventBus.send(EventType.Search,this.search); 
-    }
-    public brand:string = "Dashboard";
-    public search:string ="";
+    
+ 
+   
 }

@@ -2,30 +2,32 @@ import Vue from 'vue'
 import { Component, Watch } from 'vue-property-decorator'
 import EventBus, { EventType } from '../shared/services/event-bus';
 import BindingSource from '../shared/services/binding-source'
-import HttpService from '../shared/services/http.service'
+import HttpService from '../shared/services/oauth-http.service'
 import { Room } from '../rooms/room'
+import Command from './command.component'
+import Schedule from './schedule.component'
+import Config from '../shared/services/config'
+
 @Component({
     name: 'Remote',
     template: require("./remote.html"),
-
+    components:{
+        "v-command":Command,
+        "v-schedule":Schedule
+    }
 
 })
 export default class Remote extends Vue {
 
+    public room = new Room();
     bindingSource = new BindingSource<Room>('ID');
     private http: HttpService<Room>;
     private eventBus = new EventBus();
-    private room = new Room();
-    private temperature = 22;
-    private fan = 0;
-    private mode =0;
+
+   
     constructor() {
         super();
-        this.http = new HttpService<Room>("http://localhost:5001/api/Rooms", {
-            handle(status: number, statusText: string) {
-                console.log(status, ' ', statusText);
-            }
-        });
+        this.http = new HttpService<Room>(Config.RoomsUrl);
 
         this.eventBus.on(EventType.RoomCreated, data => this.bindingSource.add(data));
         this.eventBus.on(EventType.RoomDeleted, data => this.bindingSource.delete(Number(data)));
@@ -33,17 +35,26 @@ export default class Remote extends Vue {
         this.eventBus.on(EventType.TemperatureUpdated, data => {
             let room = this.bindingSource.findFirst(o => o.Name === data.RoomName);
             if (room !== undefined) {
-                room.Temperature = data.Temperature;
+              
+                room.Temperature = data.Temperature ;
             }
         })
-         this.http.getItems((room) => this.bindingSource.add(room), () => {
-           // this.bindingSource.moveTo(Number(this.$route.params.roomID));
-           console.log(this.bindingSource);
-        });
+
+        this.http.getItems((room) => this.bindingSource.add(room), () => this.selectFirstRoom());
+        this.bindingSource.currentChanged.on(room => this.onBindingSourceCurrentChanged(room));
     }
 
-    public send():void{
-        console.log(this.room.Name,'Fan',this.fan,'Mode',this.mode,'temp',this.temperature);
+    public onBindingSourceCurrentChanged(room: Room): void {
+        this.room = room;
+    }
+    public selectFirstRoom() {
+
+        this.room = this.bindingSource.dataItems[0];
     }
 
+   
+
+
+
+  
 }
