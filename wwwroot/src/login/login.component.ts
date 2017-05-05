@@ -28,6 +28,7 @@ export default class Login extends Vue {
             "POST",
             this.onLogon,
             (error) => {
+                console.log(error)
             this.dialog.showMessage("Logon","Invalid user or password",Buttons.OK);
             },
             //"grant_type=password&username=" + user + "&password=" + password

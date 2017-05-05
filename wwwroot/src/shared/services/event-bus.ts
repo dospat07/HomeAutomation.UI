@@ -18,7 +18,8 @@ export interface Dictionary {
     'Error',
     'Search',
     'ScheduleCreated',
-    'ScheduleDeleted'
+    'ScheduleDeleted',
+    'CommandSend'
 
 ])
  

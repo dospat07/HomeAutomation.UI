@@ -6,9 +6,9 @@
         <button type="button" class="btn btn-default" @click='up'>&#9653</button>
         <button type="button" class="btn btn-default" @click="setMode">Mode <span :style="{color:modeColor}" v-html="modes[mode]"></span></button>
         <button type="button" class="btn btn-default" @click="setFan">Fan <span v-html="fans[fan]"></span></button>
-        <label class="btn btn-default" v-bind:class="{ active:schedule}">
+        <!--<label class="btn btn-default" v-bind:class="{ active:schedule}">
                                         <input type="checkbox"  autocomplete="off"  v-model="schedule" value="0">Schedule
-                                    </label>
+                                    </label>-->
          <button type="button" class="btn btn-default" @click='set' :disabled='!canSet'>set</button>
        
 
@@ -17,7 +17,7 @@
     
     <div   >
      <div class="btn-group addon-form-group margin-top">
-                 <label v-if="schedule" class="btn btn-default" v-bind:class="{ active:schedule}">
+                 <label  class="btn btn-default" v-bind:class="{ active:schedule}">
                                         <input type="checkbox"  autocomplete="off"  v-model="schedule" value="0">Schedule
                                     </label>
                 <label  v-if="schedule" class="btn btn-default" v-bind:class="{ active:mon==true}">

@@ -6,7 +6,7 @@ module.exports = {
             index: 'index.html'
         }
     },
-    devtool: "source-map",
+  //  devtool: "source-map",
     context: path.join(__dirname, './wwwroot/src/'),
     entry: './main.ts',
     output: {
@@ -43,7 +43,7 @@ module.exports = {
     },
 
     plugins: [
-       // new webpack.optimize.UglifyJsPlugin({ minimize: true }),
+       new webpack.optimize.UglifyJsPlugin({ minimize: true }),
         new webpack.ProvidePlugin(
             {
                 jQuery: 'jquery',

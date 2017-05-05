@@ -27,8 +27,8 @@ export default class SignalRService {
 
         // atempt connection, and handle errors
         this.connection.start()
-            .done(() => console.log('Connected, connection ID=' + this.connection.id))
-            .fail(() => console.log('Could not connect'));
+            .done(() => console.log('SignalR connected, connection ID=' + this.connection.id))
+            .fail(() => console.log('SignalR could not connect'));
     }
 }
 

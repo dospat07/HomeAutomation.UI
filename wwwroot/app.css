@@ -16,3 +16,20 @@
 .margin-top{
     margin-top:10px;
 }
+.notification-position {
+    position: fixed;
+    top: 0px;
+    margin-bottom: 0px;
+    right: 0px;
+    z-index: 9999;
+}
+
+thead th {
+    background-color:cornflowerblue;
+    color: white;
+}
+
+.zero-margin{
+    margin-top: 0px;
+    margin-bottom: 0px;
+}

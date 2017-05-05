@@ -1,6 +1,6 @@
 
 <div v-if="bindingSource.dataItems.length>0">
- <table class='table'>
+ <table class='table  table-bordered zero-margin'>
         <thead>
             <tr>
                 <th v-for="column in columns" @click='bindingSource.sortBy(column.name)'>
@@ -10,6 +10,7 @@
 
                     <span> {{column.header}}{{ bindingSource.sortColumn===column.name? bindingSource.sortOrder[column.name]<0 ?'&#9663':'&#9653':''}}</span>
                 </th>
+                    <th></th>
             </tr>
         </thead>
         <tbody>
