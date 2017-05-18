@@ -22,15 +22,9 @@ module.exports = {
             { test: /\.tsx?$/, loader: 'ts-loader', exclude: /node_modules/, },
             // { test: /\.tsx?$/, loader: 'vue-ts-loader' }
             { test: /\.html$/, loader: "html-loader" },
-            { test: /\.js$/, loader: "babel-loader", query: {
-                  presets: ['es2015' ]
-                 
-                }}
-           // { test: /\.js$/, loader: "source-map-loader", enforce: 'pre' },
+            { test: /\.js$/, loader: "babel-loader", query: {presets: ['es2015' ]}}
+            // { test: /\.js$/, loader: "source-map-loader", enforce: 'pre' },
         ]
-        
-
-
     },
     resolve: {
         alias: {
@@ -45,20 +39,16 @@ module.exports = {
         extensions: [".tsx", ".ts", ".js"]
 
     },
-
     plugins: [
-      
-             
+                  
         new webpack.ProvidePlugin(
             {
                 jQuery: 'jquery',
                 $: 'jquery',
                 jquery: 'jquery',
                 'window.$': 'jquery',
-                'window.jQuery': 'jquery'
-
-            
+                'window.jQuery': 'jquery'        
             }),
-              new webpack.optimize.UglifyJsPlugin({ minimize: true }),
+        new webpack.optimize.UglifyJsPlugin({ minimize: true }),
     ]
 };
