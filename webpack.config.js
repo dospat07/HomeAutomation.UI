@@ -47,7 +47,7 @@ module.exports = {
     },
 
     plugins: [
-        new webpack.optimize.UglifyJsPlugin({ minimize: true }),
+      
              
         new webpack.ProvidePlugin(
             {
@@ -58,6 +58,7 @@ module.exports = {
                 'window.jQuery': 'jquery'
 
             
-            })
+            }),
+              new webpack.optimize.UglifyJsPlugin({ minimize: true }),
     ]
 };

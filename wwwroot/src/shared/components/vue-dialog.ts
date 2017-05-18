@@ -22,7 +22,7 @@ export default class VueDialog extends Vue {
                 case Buttons.YesNo:this.btnYesNo = true;this.btnOK =false;break;
                 default:break;
             }
-            $('#messageDialog').modal('show');
+             $('#messageDialog').modal('show');
             this.dialog.show = false;
         }
         return this.dialog.show;
@@ -30,7 +30,7 @@ export default class VueDialog extends Vue {
 
     private exit(): void {
         console.log('exit');
-        $('#messageDialog').modal('hide');
+       $('#messageDialog').modal('hide');
         this.dialog.show = false;
     }
     public close() {

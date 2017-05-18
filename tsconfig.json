@@ -18,7 +18,8 @@
     "experimentalDecorators": true,
     "types": [
       "jquery",
-      "node"
+      "node",
+      "bootstrap"
       
      
     ],
