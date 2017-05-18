@@ -18,6 +18,7 @@ export default class Paginator<T>   {
    
     public next() {
 
+        
         this.currentPage = this.totalPages >= (this.currentPage + 1) ? this.currentPage + 1 : this.currentPage = 1;
     };
 

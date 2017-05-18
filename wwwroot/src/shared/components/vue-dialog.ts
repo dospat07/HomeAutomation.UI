@@ -58,15 +58,5 @@ export default class VueDialog extends Vue {
     public mounted() {
 
     }
-    // public get show(): string {
-    //     return this._show;
-    // }
-    // public set show(value: string) {
-    //     if (value === 'true') {
-    //         $('#messageDialog').modal({ show: true });
-    //     } else {
-    //         $('#messageDialog').modal({ show: false });
-    //     }
-    //     this._show = value;
-    // }
+   
 }

@@ -1,13 +1,9 @@
 
 <div v-if="bindingSource.dataItems.length>0">
- <table class='table  table-bordered zero-margin'>
+ <table class='table  table-bordered zero-margin table-striped'>
         <thead>
             <tr>
                 <th v-for="column in columns" @click='bindingSource.sortBy(column.name)'>
-
-
-                    <!--<span style='display: block; text-align: center'  v-if="bindingSource.sortColumn===column.name" class="glyphicon" :class="bindingSource.sortOrder[column.name]>0 ?'glyphicon-sort-by-attributes':'glyphicon-sort-by-attributes-alt'"></span>-->
-
                     <span> {{column.header}}{{ bindingSource.sortColumn===column.name? bindingSource.sortOrder[column.name]<0 ?'&#9663':'&#9653':''}}</span>
                 </th>
                     <th></th>

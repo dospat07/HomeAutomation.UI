@@ -6,10 +6,11 @@
       "es6",
       "es2015.promise"
     ],
-  
+    
+     "noResolve": false,
     "sourceMap": true,
-    "noImplicitAny": true,
-    "module": "es2015",
+    "noImplicitAny": false,
+    "module":"es2015",
     "moduleResolution": "node",
     "target": "es5",
     "jsx": "react",
@@ -17,11 +18,13 @@
     "experimentalDecorators": true,
     "types": [
       "jquery",
-      "node",
-      "signalr"
+      "node"
+      
+     
     ],
     "typeRoots": [
       "./node_modules/@types"
     ]
   }
+   
 }

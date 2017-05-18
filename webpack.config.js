@@ -1,5 +1,6 @@
 var path = require('path');
 var webpack = require('webpack');
+
 module.exports = {
     devServer: {
         historyApiFallback: {
@@ -8,7 +9,7 @@ module.exports = {
     },
     devtool: "source-map",
     context: path.join(__dirname, './wwwroot/src/'),
-    entry: './main.ts',
+    entry: [ './main.ts'],
     output: {
         path: path.join(__dirname, './wwwroot/built'),
         publicPath: 'built',
@@ -21,8 +22,13 @@ module.exports = {
             { test: /\.tsx?$/, loader: 'ts-loader', exclude: /node_modules/, },
             // { test: /\.tsx?$/, loader: 'vue-ts-loader' }
             { test: /\.html$/, loader: "html-loader" },
-            { test: /\.js$/, loader: "source-map-loader", enforce: 'pre' },
-        ],
+            { test: /\.js$/, loader: "babel-loader", query: {
+                  presets: ['es2015',"stage-0"]
+                 
+                }}
+           // { test: /\.js$/, loader: "source-map-loader", enforce: 'pre' },
+        ]
+        
 
 
     },
@@ -36,14 +42,13 @@ module.exports = {
             path.resolve('./node_modules')
 
         ],
-
-
         extensions: [".tsx", ".ts", ".js"]
 
     },
 
     plugins: [
-       // new webpack.optimize.UglifyJsPlugin({ minimize: true }),
+      // new webpack.optimize.UglifyJsPlugin({ minimize: true }),
+             
         new webpack.ProvidePlugin(
             {
                 jQuery: 'jquery',
@@ -52,6 +57,7 @@ module.exports = {
                 'window.$': 'jquery',
                 'window.jQuery': 'jquery'
 
+            
             })
     ]
 };
