@@ -7,7 +7,7 @@ module.exports = {
             index: 'index.html'
         }
     },
-    devtool: "source-map",
+   // devtool: "source-map",
     context: path.join(__dirname, './wwwroot/src/'),
     entry: [ './main.ts'],
     output: {
@@ -23,7 +23,7 @@ module.exports = {
             // { test: /\.tsx?$/, loader: 'vue-ts-loader' }
             { test: /\.html$/, loader: "html-loader" },
             { test: /\.js$/, loader: "babel-loader", query: {
-                  presets: ['es2015',"stage-0"]
+                  presets: ['es2015' ]
                  
                 }}
            // { test: /\.js$/, loader: "source-map-loader", enforce: 'pre' },
@@ -47,7 +47,7 @@ module.exports = {
     },
 
     plugins: [
-      // new webpack.optimize.UglifyJsPlugin({ minimize: true }),
+        new webpack.optimize.UglifyJsPlugin({ minimize: true }),
              
         new webpack.ProvidePlugin(
             {
