@@ -9,15 +9,15 @@ import Schedule from './schedule.component'
 import Config from '../shared/services/config'
 
 @Component({
-    name: 'Remote',
-    template: require("./remote.html"),
+    name: 'Dashboard',
+    template: require("./dashboard.html"),
     components:{
         "v-command":Command,
         "v-schedule":Schedule
     }
 
 })
-export default class Remote extends Vue {
+export default class Dashboard extends Vue {
 
     public room = new Room();
     bindingSource = new BindingSource<Room>('ID');

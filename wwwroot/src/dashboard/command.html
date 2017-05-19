@@ -1,11 +1,15 @@
-<form class="form-horizontal">
+<form class="form-horizontal"  >
 
-    <div class="btn-group addon-form-group margin-top ">
-        <button type="button" class="btn btn-default ">Temp</button>
-        <button type="button" class="btn btn-default " @click='down'>&#9663</button>
+    <div class="btn-group addon-form-group margin-top " >
+        <!--<button type="button" class="btn btn-default ">Temp</button>-->
+        <button type="button" class="btn btn-default "  @click='down'>&#9663</button>
+        <button type="button" class="btn btn-default "  style='color:cornflowerblue'>{{temperature}}&#8451</button >
         <button type="button" class="btn btn-default " @click='up'>&#9653</button>
         <button type="button" class="btn btn-default " @click="setMode">Mode <span :style="{color:modeColor}" v-html="modes[mode]"></span></button>
         <button type="button" class="btn btn-default " @click="setFan">Fan <span v-html="fans[fan]"></span></button>
+        <label  class="btn btn-default" v-bind:class="{ active:schedule}">
+                                        <input type="checkbox"  autocomplete="off"  v-model="schedule" value="0">Schedule
+                                    </label>
         <!--<label class="btn btn-default" v-bind:class="{ active:schedule}">
                                         <input type="checkbox"  autocomplete="off"  v-model="schedule" value="0">Schedule
                                     </label>-->
@@ -13,13 +17,13 @@
        
 
     </div>
-    <span class="pull-right" style='font-size:36px;color:cornflowerblue'>{{temperature}}&#8451</span >
+    <!--<span class="pull-right" style='font-size:36px;color:cornflowerblue'>{{temperature}}&#8451</span >-->
     
     <div   >
      <div class="btn-group addon-form-group margin-top">
-                 <label  class="btn btn-default" v-bind:class="{ active:schedule}">
+                 <!--<label  class="btn btn-default" v-bind:class="{ active:schedule}">
                                         <input type="checkbox"  autocomplete="off"  v-model="schedule" value="0">Schedule
-                                    </label>
+                                    </label>-->
                 <label  v-if="schedule" class="btn btn-default" v-bind:class="{ active:mon==true}">
                                         <input type="checkbox"  autocomplete="off"  v-model="mon" value="1">Mon
                                     </label>

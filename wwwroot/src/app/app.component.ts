@@ -4,7 +4,7 @@ import { Component } from 'vue-property-decorator'
 import EventBus, { EventType } from '../shared/services/event-bus'
 import VueNotification, { Notification } from '../shared/components/vue-notification'
 import Rooms from '../rooms/rooms.component'
-import Remote from '../dashboard/remote.component'
+import Dashboard from '../dashboard/dashboard.component'
 import Login from '../login/login.component'
 import SignalRService from '../shared/services/signalr.service';
 import Config from "../shared/services/config"
@@ -15,7 +15,7 @@ Vue.use(VueRouter);
 Vue.config.devtools = true;
 
 @Component({
-    name: "Menu",
+    name: "App",
     template: require("./app.html"),
     router: new VueRouter({ mode: 'history', }),
     components: {
@@ -67,7 +67,7 @@ export default class App extends Vue {
         this.$router.addRoutes([
 
             { path: '/Rooms/:roomID?', component: Rooms },
-            { path: '/', component: Remote },
+            { path: '/', component: Dashboard },
             { path: '/Login', component: Login }
         ]
         );
