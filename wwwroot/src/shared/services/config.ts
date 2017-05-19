@@ -10,5 +10,5 @@ export default class Config
     public static ScheduleUrl=Config.Host+"/api/Schedule";
     public static RoomsUrl=Config.Host+"/api/Rooms";
     public static TokenUrl ="http://localhost:5843/connect/token";
-    public static SignalRUrl = Config.Host+"/test";
+    public static SignalRUrl = Config.Host+"/socket";
 }
