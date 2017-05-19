@@ -24,9 +24,9 @@ export default class Command extends Vue {
     private sat = false;
     private sun = false;
     private time = "08:00";
-    private modes: Array<string> = ["&#8858", "&#9788", "&#9728"];
+    private modes: Array<string> = ["Off", "Heat", "Cool"];
     private modeColor: string = 'red'
-    private fans: Array<string> = ["Auto", "&#10072", "&#10072&#10072", "&#10072&#10072&#10072", "&#10072&#10072&#10072&#10072", "&#10072&#10072&#10072&#10072&#10072", "&#10072&#10072&#10072&#10072&#10072&#10072"];
+    private fans: Array<string> = ["Auto", "1", "2", "3", "4", "5", "6"];
     private roomID: number;
 
 
@@ -62,7 +62,7 @@ export default class Command extends Vue {
     public get canSet():boolean{
         return    (this.schedule&&(this.mon || this.tue || this.wed || this.thu || this.fri || this.sat || this.sun))|| !this.schedule ;
     }
-    public async set() {
+    public set() {
 
         console.log(this.roomID, "Fan", this.fan, 'Mode', this.mode, 'temp', this.temperature, "scheule", this.schedule, "time", this.time);
         let url: string;

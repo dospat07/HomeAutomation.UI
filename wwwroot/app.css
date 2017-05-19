@@ -35,3 +35,6 @@ thead th {
     margin-top: 0px;
     margin-bottom: 0px;
 }
+.command .btn {
+    min-width: 60px;
+}
