@@ -1,5 +1,5 @@
 <div  style="min-width: 510px">
-    <nav class="navbar navbar-default">
+    <nav v-if="connected" class="navbar navbar-default">
         <div class="container-fluid">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -11,8 +11,8 @@
                 <!--<a class="navbar-brand" href="/">{{brand}}</a>-->
             </div>
 
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
+            <div  class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul  class="nav navbar-nav">
                      
                        
                     <li>
@@ -41,6 +41,7 @@
             </div>
         </div>
     </nav>
+     <div v-if="connected===false">{{message}}</div>
      <keep-alive>
         <router-view></router-view>
     </keep-alive>

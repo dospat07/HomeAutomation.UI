@@ -37,34 +37,37 @@ import * as signalR from '..//..//..//..//node_modules/signalr-client/dist/brows
 //var signalR = require ('..//..//..//..//node_modules/signalr-client/dist/browser/signalr-client.js');
 //import * as signalR from "..//..//..//..//node_modules/signalr-client/dist/src/index"
 export default class SignalRService {
-  
-    
-   // connection : signalR.HubConnection; 
-    connection :any; 
-    eventBus:EventBus
-    constructor(private url: string) {
-      
-        this.connection =  new signalR.HubConnection(url, 'formatType=json&format=text');
-     
-       
-        this.eventBus  =new EventBus();
-    
+
+
+    // connection : signalR.HubConnection; 
+    connection: any;
+    eventBus: EventBus
+    constructor(private url: string,closedCallback:any) {
+
+        this.connection = new signalR.HubConnection(url, 'formatType=json&format=text');
+
+
+        this.eventBus = new EventBus();
+
+         this.connection.onClosed = closedCallback;
         // receives broadcast messages from a hub function, called "onEvent"
-       this.connection.on('onEvent',(type: any, message: any)=>{
-           // console.log("SignalR received type " + type + " message :" + JSON.stringify(message));
-          this.eventBus.send(type,message);
-          
+        this.connection.on('onEvent', (type: any, message: any) => {
+            // console.log("SignalR received type " + type + " message :" + JSON.stringify(message));
+            this.eventBus.send(type, message);
+
         });
     };
 
-    public get conectionID():string{
+    public get conectionID(): string {
         // return  this.connection.id;
         return this.url;
-    
+
     }
     public start() {
 
-         this.connection.start( signalR.TransportType.WebSockets).catch(err => console.log(err))
-    }  
+        return this.connection.start(signalR.TransportType.WebSockets);
+
+
+    }
 }
 

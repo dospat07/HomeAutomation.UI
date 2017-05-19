@@ -1,15 +1,15 @@
 <form class="form-horizontal">
 
-    <div class="btn-group addon-form-group margin-top">
-        <button type="button" class="btn btn-default  ">Temp</button>
-        <button type="button" class="btn btn-default  " @click='down'>&#9663</button>
-        <button type="button" class="btn btn-default" @click='up'>&#9653</button>
-        <button type="button" class="btn btn-default" @click="setMode">Mode <span :style="{color:modeColor}" v-html="modes[mode]"></span></button>
-        <button type="button" class="btn btn-default" @click="setFan">Fan <span v-html="fans[fan]"></span></button>
+    <div class="btn-group addon-form-group margin-top ">
+        <button type="button" class="btn btn-default ">Temp</button>
+        <button type="button" class="btn btn-default " @click='down'>&#9663</button>
+        <button type="button" class="btn btn-default " @click='up'>&#9653</button>
+        <button type="button" class="btn btn-default " @click="setMode">Mode <span :style="{color:modeColor}" v-html="modes[mode]"></span></button>
+        <button type="button" class="btn btn-default " @click="setFan">Fan <span v-html="fans[fan]"></span></button>
         <!--<label class="btn btn-default" v-bind:class="{ active:schedule}">
                                         <input type="checkbox"  autocomplete="off"  v-model="schedule" value="0">Schedule
                                     </label>-->
-         <button type="button" class="btn btn-default" @click='set' :disabled='!canSet'>set</button>
+         <button type="button" class="btn btn-default " @click='set' :disabled='!canSet'>Set</button>
        
 
     </div>
