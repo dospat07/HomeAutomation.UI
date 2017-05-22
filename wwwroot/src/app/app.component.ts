@@ -41,9 +41,14 @@ export default class App extends Vue {
     public async start() {
 
         try {
+           
             let t = await this.signalrSerivice.start();
             this.addRoutes();
             this.connected = true;
+             if (localStorage.getItem("login") == undefined){
+              
+                this.$router.push("/login");
+            }
         } catch (e) {
             console.log(e);
             this.message = "Can't connect to socket"

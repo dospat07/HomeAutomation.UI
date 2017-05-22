@@ -56,7 +56,9 @@ constructor(private url?: string,private beforeSend?:{(xhr:JQueryXHR):void})
             method: method,
             url: url,
             data: data,
-
+             xhrFields: {
+                "withCredentials": true
+            },
             beforeSend: (xhr) => {
                 if (this.beforeSend!=undefined){
                     this.beforeSend(xhr);

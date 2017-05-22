@@ -2,14 +2,15 @@ import Vue from 'vue'
 import { Component } from 'vue-property-decorator'
 import OAuthHttp from '../shared/services/oauth-http.service'
 import Config from '../shared/services/config'
-import VueDialog from  '../shared/components/vue-dialog'
-import MessageDialog ,{Buttons}from  '../shared/services/message-dialog'
- 
+import VueDialog from '../shared/components/vue-dialog'
+import MessageDialog, { Buttons } from '../shared/services/message-dialog'
+import Http from '../shared/services/http.service'
+
 @Component({
     name: "Login",
     template: require("./login.html"),
-      components: {
-        
+    components: {
+
         'v-dialog': VueDialog
     }
 
@@ -21,30 +22,22 @@ export default class Login extends Vue {
     dialog = new MessageDialog();
 
     public logon() {
-        let http = new OAuthHttp(null,this.dialog);
+    
 
-        http.request(
-            Config.TokenUrl,
-            "POST",
-            this.onLogon,
-            (error) => {
-                console.log(error)
-            this.dialog.showMessage("Logon","Invalid user or password",Buttons.OK);
-            },
-            //"grant_type=password&username=" + user + "&password=" + password
-            "grant_type=client_credentials&scope=engine&client_id=" + this.user + "&client_secret=" + this.password
-            ,
-            "application/x-www-form-urlencoded"
-        )
+      let http = new Http();
+      http.request(Config.Host + "/api/login","POST",this.onLogon,null,JSON.stringify({
+                "UserName": this.user,
+                "Password": this.password
+            }));
 
+       
 
     }
 
     private onLogon(data: any) {
 
-        console.log(data);
-        localStorage.setItem('accessToken', data.access_token);
-        this.$router.push('/');
+        localStorage.setItem("login", "ok");
+        this.$router.push("/");
 
     }
 }
