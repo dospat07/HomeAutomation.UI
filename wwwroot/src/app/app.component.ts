@@ -45,9 +45,12 @@ export default class App extends Vue {
             let t = await this.signalrSerivice.start();
             this.addRoutes();
             this.connected = true;
-             if (localStorage.getItem("login") == undefined){
+            let  cookie = document.cookie.split(".AspNetCore.Cookies=");
+            console.log(cookie);
+            if(cookie.length === 1){
               
                 this.$router.push("/login");
+
             }
         } catch (e) {
             console.log(e);

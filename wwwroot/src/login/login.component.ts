@@ -28,15 +28,13 @@ export default class Login extends Vue {
       http.request(Config.Host + "/api/login","POST",this.onLogon,null,JSON.stringify({
                 "UserName": this.user,
                 "Password": this.password
-            }));
-
-       
+            }));    
 
     }
 
     private onLogon(data: any) {
 
-        localStorage.setItem("login", "ok");
+     
         this.$router.push("/");
 
     }
