@@ -33,8 +33,6 @@ export default class Login extends Vue {
     }
 
     private onLogon(data: any) {
-
-     
         this.$router.push("/");
 
     }

@@ -5,8 +5,8 @@
         <button type="button" class="btn btn-default "  @click='down'>-</button>
         <button type="button" class="btn btn-default "  style='color:cornflowerblue'>{{temperature}}&#8451</button >
         <button type="button" class="btn btn-default " @click='up'>+</button>
-        <button type="button" class="btn btn-default " @click="setMode"><span :style="{color:modeColor}" v-html="modes[mode]"></span></button>
-        <button type="button" class="btn btn-default " @click="setFan">Fan <span v-html="fans[fan]"></span></button>
+        <button type="button" class="btn btn-default " @click="setMode" :style="{color:modeColor}">{{modes[mode]}}</button>
+        <button type="button" class="btn btn-default " @click="setFan">Fan {{fans[fan]}}</button>
         <label  class="btn btn-default" v-bind:class="{ active:schedule}">
                                         <input type="checkbox"  autocomplete="off"  v-model="schedule" value="0">Schedule
                                     </label>

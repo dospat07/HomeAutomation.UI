@@ -1,5 +1,11 @@
 
 /*@import url('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css');*/
+ 
+ *,.btn {
+   font-size: 16px;
+  
+}
+ 
  .bold {
      font-weight: bold;
  }
