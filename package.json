@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "devServer": ".\\node_modules\\.bin\\webpack-dev-server --progress --content-base wwwroot --watch-content-base --port 5000",
+    "devServer": ".\\node_modules\\.bin\\webpack-dev-server --progress --content-base wwwroot --watch-content-base ",
     "apiServer": "dotnet HomeAutomation.Engine.dll",
     "goToAPiServer": "cd  ..\\HomeAutomation.Engine\\bin\\Release\\netcoreapp1.0\\",
     "startApi": "npm run goToAPiServer & npm run apiServer"
