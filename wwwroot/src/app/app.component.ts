@@ -42,7 +42,7 @@ export default class App extends Vue {
 
         try {
            
-            let t = await this.signalrSerivice.start();
+         //   let t = await this.signalrSerivice.start();
             this.addRoutes();
             this.connected = true;
             let  cookie = document.cookie.split(".AspNetCore.Cookies=");

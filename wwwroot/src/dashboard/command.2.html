@@ -1,0 +1,77 @@
+<form>
+
+
+    <div>
+        <div class="btn-group addon-form-group margin-top  ">
+            <label class="btn btn-defaul command-label">Temp</label>
+            <button type="button" class="btn btn-default " @click='down'>-</button>
+            <label class="btn btn-default " style='color:cornflowerblue'>{{temperature}}&#8451</label >
+        <button type="button" class="btn btn-default " @click='up'>+</button>
+   </div>
+   </div>
+   <div>
+    <div class="btn-group addon-form-group margin-top">
+
+        <label class="btn btn-defaul  command-label">Mode</label>
+         <button type="button" class="btn btn-default " @click='down'>-</button>
+            <button type="button" class="btn btn-default  " @click="setMode" :style="{color:modeColor}">{{modes[mode]}}</button>
+              <button type="button" class="btn btn-default " @click='up'>+</button>
+
+        </div>
+    </div>
+    <div class="btn-group addon-form-group margin-top">
+        <label class="btn btn-defaul command-label">Fan</label>
+         <button type="button" class="btn btn-default " @click='down'>-</button>
+        <button type="button" class="btn btn-default  " @click="setFan">{{fans[fan]}}</button>
+          <button type="button" class="btn btn-default " @click='up'>+</button>
+    </div>
+
+    <div>
+        <div class="btn-group addon-form-group margin-top ">
+
+
+            <label class="btn btn-default" v-bind:class="{ active:schedule}">
+                                        <input type="checkbox"  autocomplete="off"  v-model="schedule" value="0">Schedule
+                                    </label>
+            <!--<label class="btn btn-default" v-bind:class="{ active:schedule}">
+                                        <input type="checkbox"  autocomplete="off"  v-model="schedule" value="0">Schedule
+                                    </label>-->
+            <button type="button" class="btn btn-default " @click='set' :disabled='!canSet'>Set</button>
+        </div>
+    </div>
+    <!--<span class="pull-right" style='font-size:36px;color:cornflowerblue'>{{temperature}}&#8451</span >-->
+
+    <div>
+        <div class="btn-group addon-form-group margin-top">
+            <!--<label  class="btn btn-default" v-bind:class="{ active:schedule}">
+                                        <input type="checkbox"  autocomplete="off"  v-model="schedule" value="0">Schedule
+                                    </label>-->
+            <label v-if="schedule" class="btn btn-default" v-bind:class="{ active:mon==true}">
+                                        <input type="checkbox"  autocomplete="off"  v-model="mon" value="1">Mon
+                                    </label>
+            <label v-if="schedule" class="btn btn-default" v-bind:class="{ active:tue==true}">
+                                        <input type="checkbox"  autocomplete="off"  v-model="tue" value="1">Tue
+                                    </label>
+            <label v-if="schedule" class="btn btn-default" v-bind:class="{ active:wed==true}">
+                                        <input type="checkbox"  autocomplete="off"  v-model="wed" value="1" >Wed
+                                    </label>
+            <label v-if="schedule" class="btn btn-default" v-bind:class="{ active:thu==true}">
+                                        <input type="checkbox" autocomplete="off"  v-model="thu" value="1" >Thu
+                                    </label>
+            <label v-if="schedule" class="btn btn-default" v-bind:class="{ active:fri==true}">
+                                        <input type="checkbox"  autocomplete="off" v-model="fri" value="1" >Fri
+                                    </label>
+            <label v-if="schedule" class="btn btn-default" v-bind:class="{ active:sat==true}">
+                                        <input type="checkbox"  autocomplete="off" v-model="sat" value="1" >Sat
+                                    </label>
+            <label v-if="schedule" class="btn btn-default" v-bind:class="{ active:sun==true}">
+                                        <input type="checkbox"  autocomplete="off" v-model="sun" value="1" >Sun
+                                    </label>
+        </div>
+    </div>
+    <div v-if="schedule" class="form-group margin-top">
+        <input type="time" class="form-control col-sm-3" v-model="time">
+    </div>
+
+
+</form>

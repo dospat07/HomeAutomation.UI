@@ -1,10 +1,10 @@
 
 /*@import url('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css');*/
  
- *,.btn {
+ /**,.btn {
    font-size: 16px;
   
-}
+}*/
  
  .bold {
      font-weight: bold;
@@ -41,6 +41,20 @@ thead th {
     margin-top: 0px;
     margin-bottom: 0px;
 }
-.command .btn {
-    min-width: 60px;
+ 
+.command-title{
+    width:60px;
+    cursor:initial;
+    font-weight: bold;  
+}
+
+.command-label{
+    width:50px;
+    cursor:initial; 
+}
+.btn-radio {
+    opacity: 0.65;
+}
+.btn-radio.active{
+    opacity: 1;
 }

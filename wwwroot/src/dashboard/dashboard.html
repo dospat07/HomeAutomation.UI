@@ -2,22 +2,19 @@
     <div class="panel panel-primary">
         <div class="panel-body">
             <ul class="list-group">
-                <li v-for="r in bindingSource.dataItems" 
-                    class="list-group-item" 
-                    :class="{active:r.Name == room.Name}" 
-                    @click="bindingSource.current=r">
-                    <div style='font-weight:bold' >
-                        <span data-toggle='collapse' :data-target="'#room'+r.ID">{{r.Name}} </span>
-                        <span class="pull-right"  data-toggle='collapse' :data-target="'#room'+r.ID">{{r.Temperature}}&#8451   </span>
+                <li v-for="r in bindingSource.dataItems" class="list-group-item" :class="{active:r.Name == room.Name}" @click="bindingSource.current=r">
+                    <div style='font-weight:bold' data-toggle='collapse' :data-target="'#room'+r.ID">
+                        <span>{{r.Name}} </span>
+                        <span class="pull-right">{{r.Temperature}}&#8451   </span>
                     </div>
-                    <v-command :id ="'room'+r.ID" :roomID="r.ID" class="collapsed"></v-command>
+                    <v-command class="collapse out" :id="'room'+r.ID" :roomID="r.ID"></v-command>
                 </li>
             </ul>
-           
+
         </div>
-          <v-schedule></v-schedule>
+        <v-schedule></v-schedule>
     </div>
-  
+
 
 
 

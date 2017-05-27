@@ -25,32 +25,55 @@ export default class Command extends Vue {
     private sun = false;
     private time = "08:00";
     private modes: Array<string> = ["Off", "Heat", "Cool"];
-    private modeColor: string = 'red'
+    // private modeColor: string = 'red'
     private fans: Array<string> = ["Auto", "1", "2", "3", "4", "5", "6"];
     private roomID: number;
 
 
-    public up() {
+    public upTemperature() {
         this.temperature = this.temperature < 30 ? this.temperature + 1 : this.temperature;
 
     }
 
-    public down() {
+    public downTemperature() {
         this.temperature = this.temperature > 16 ? this.temperature - 1 : this.temperature;
     }
 
-    public setMode() {
+    
+    public upMode() {
         if (this.mode == 2) {
             this.mode = 0;
-            this.modeColor = 'red';
+          //  this.modeColor = 'red';
         } else {
             this.mode++;
-            this.modeColor = 'green';
+           // this.modeColor = 'green';
         }
 
     }
+   
+   public get modeColor():string{
+       return this.mode===0?'red':'green';
+   }
+    public downMode() {
+        if (this.mode == 0) {
+            this.mode = 2;
+           
+        } else {
+            this.mode--;
+            
+        }
 
-    public setFan() {
+    }
+    public downFan() {
+        if (this.fan == 0) {
+            this.fan =6
+        } else {
+            this.fan--;
+        }
+
+    }
+  
+  public upFan() {
         if (this.fan == 6) {
             this.fan = 0
         } else {
@@ -58,7 +81,6 @@ export default class Command extends Vue {
         }
 
     }
-
     public get canSet():boolean{
         return    (this.schedule&&(this.mon || this.tue || this.wed || this.thu || this.fri || this.sat || this.sun))|| !this.schedule ;
     }
