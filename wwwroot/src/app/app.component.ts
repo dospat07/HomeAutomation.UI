@@ -6,6 +6,7 @@ import VueNotification, { Notification } from '../shared/components/vue-notifica
 import Rooms from '../rooms/rooms.component'
 import Dashboard from '../dashboard/dashboard.component'
 import Login from '../login/login.component'
+import Charts from '../chart/charts.components'
 import SignalRService from '../shared/services/signalr.service';
 import Config from "../shared/services/config"
 import VueRouter from 'vue-router'
@@ -76,7 +77,8 @@ export default class App extends Vue {
 
             { path: '/Rooms/:roomID?', component: Rooms },
             { path: '/', component: Dashboard },
-            { path: '/Login', component: Login }
+            { path: '/Login', component: Login },
+            { path: '/Charts', component: Charts }
         ]
         );
     }
