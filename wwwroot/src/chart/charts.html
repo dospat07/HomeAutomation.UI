@@ -5,9 +5,12 @@
         <canvas id="realTimeChart"></canvas>
     </div>
     <div class="input-group col-sm-4">
-        <span class="input-group-addon">Date</span>
-        <input type="date" class="form-control" v-model="dailyChartDate">
+        <span class="input-group-addon">From</span>
+        <input type="date" class="form-control" v-model="fromDate">
+         <span class="input-group-addon">To</span>
+        <input type="date" class="form-control" v-model="toDate">
         <span class="input-group-addon btn" @click="loadDailyChart">View</span>
+        
     </div>
     <div>
         <canvas id="dailyChart"></canvas>
