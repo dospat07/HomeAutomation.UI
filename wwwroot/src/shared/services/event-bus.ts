@@ -19,7 +19,8 @@ export interface Dictionary {
     'Search',
     'ScheduleCreated',
     'ScheduleDeleted',
-    'CommandSend'
+    'CommandSend',
+    "UserLogged"
 
 ])
  

@@ -10,6 +10,7 @@ import Charts from '../chart/charts.components'
 import SignalRService from '../shared/services/signalr.service';
 import Config from "../shared/services/config"
 import VueRouter from 'vue-router'
+import Http from '../shared/services/http.service'
 
 Vue.use(VueRouter);
 
@@ -36,27 +37,21 @@ export default class App extends Vue {
     constructor() {
         super();
         this.eventBus.on(EventType.CommandSend, this.showMessage);
-
+        this.eventBus.on(EventType.UserLogged, this.onLogin);
 
     }
-    public async start() {
+    public start() {
 
-        try {
-           
-            let t = await this.signalrSerivice.start();
-            this.addRoutes();
-            this.connected = true;
-            let  cookie = document.cookie.split(".AspNetCore.Cookies=");
-            console.log(cookie);
-            if(cookie.length === 1){
-              
-                this.$router.push("/login");
+        this.$router.addRoutes([{ path: '/Login', component: Login }]);
+        let http = new Http();
+        http.request(Config.Host + "/api/isAuthorized", "GET", () => {
+            this.proccessAuthorizedUser();
+        }, (error) => {
+            console.log(error);
+            this.$router.push("/login");
 
-            }
-        } catch (e) {
-            console.log(e);
-            this.message = "Can't connect to socket"
-        }
+        });
+
     }
     private showMessage(data: any): void {
         let message = "Command send to " + data.Conditioner;
@@ -71,16 +66,33 @@ export default class App extends Vue {
         location.reload();
     }
 
+    public async proccessAuthorizedUser() {
+        this.addRoutes();
+        try {
 
+            let t = await this.signalrSerivice.start();
+            this.connected = true;
+
+        } catch (e) {
+            console.log(e);
+            this.message = "Can't connect to socket"
+        }
+    }
+
+    private onLogin(user: string) {
+
+        this.proccessAuthorizedUser();
+        this.$router.push("/");
+    }
     private addRoutes(): void {
         this.$router.addRoutes([
 
             { path: '/Rooms/:roomID?', component: Rooms },
             { path: '/', component: Dashboard },
-            { path: '/Login', component: Login },
             { path: '/Charts', component: Charts }
         ]
         );
+        console.log(this.$router)
     }
 
 

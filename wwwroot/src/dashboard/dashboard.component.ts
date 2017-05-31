@@ -11,9 +11,9 @@ import Config from '../shared/services/config'
 @Component({
     name: 'Dashboard',
     template: require("./dashboard.html"),
-    components:{
-        "v-command":Command,
-        "v-schedule":Schedule
+    components: {
+        "v-command": Command,
+        "v-schedule": Schedule
     }
 
 })
@@ -24,7 +24,7 @@ export default class Dashboard extends Vue {
     private http: HttpService<Room>;
     private eventBus = new EventBus();
 
-   
+
     constructor() {
         super();
         this.http = new HttpService<Room>(Config.RoomsUrl);
@@ -35,13 +35,14 @@ export default class Dashboard extends Vue {
         this.eventBus.on(EventType.TemperatureUpdated, data => {
             let room = this.bindingSource.findFirst(o => o.Name === data.RoomName);
             if (room !== undefined) {
-              
-                room.Temperature = data.Temperature ;
+
+                room.Temperature = data.Temperature;
             }
         })
-
-        this.http.getItems((room) => this.bindingSource.add(room), () => this.selectFirstRoom());
         this.bindingSource.currentChanged.on(room => this.onBindingSourceCurrentChanged(room));
+
+        this.init();
+        this.init1();
     }
 
     public onBindingSourceCurrentChanged(room: Room): void {
@@ -52,9 +53,19 @@ export default class Dashboard extends Vue {
         this.room = this.bindingSource.dataItems[0];
     }
 
-   
+    public init= ()=> {
+        //console.log("Arrow init",this);
+        this.http.getItems((room) => this.bindingSource.add(room), () => this.selectFirstRoom());
+    }
+
+    public init1() {
+      //  console.log("Normal ",this);
+      //  this.http.getItems((room) => this.bindingSource.add(room), () => this.selectFirstRoom());
+    }
 
 
 
-  
+
+
+
 }
