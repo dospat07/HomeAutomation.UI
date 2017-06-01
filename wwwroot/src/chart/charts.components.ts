@@ -136,7 +136,8 @@ export default class Charts extends Vue {
                 backgroundColor: this.colors[datasetID],
                 data: [],
                 borderWidth: 1,
-                fill: false
+                fill: false,
+                pointRadius:1
             }
         };
 
@@ -183,10 +184,11 @@ export default class Charts extends Vue {
                 value["backgroundColor"] = this.colors[index];
                 value["borderWidth"] = 1;
                 value["fill"] = false;
+                value["pointRadius"] =1;
 
             });
             this.dailyChart.data = data;
-            this.dailyChart.update();;
+            this.dailyChart.update();
         },
             (error) => {
                 console.log(error);
