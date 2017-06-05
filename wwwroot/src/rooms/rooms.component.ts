@@ -76,14 +76,14 @@ export default class Rooms extends Vue {
 
     public addRoom() {
 
-        this.http.add(this.room);
+        this.http.post(this.room);
     }
 
     public updateRoom() {
        
 
         // this.dialog.showMessage(this.room.Name,this.room.NodeAddress,Buttons.OK);
-        this.http.update(this.room);
+        this.http.put(this.room);
     }
 
     public deleteRoom() {

@@ -112,17 +112,17 @@ constructor(private url?: string,private beforeSend?:{(xhr:JQueryXHR):void})
         this.request(this.url,'GET', success, error, data);
     }
 
-    public add(item:any, success?: SuccessCallback, error?: ErrorCallback) {
-        this.request(this.url,"POST", success, error, JSON.stringify(item));
+    public post(data:any, success?: SuccessCallback, error?: ErrorCallback) {
+        this.request(this.url,"POST", success, error, JSON.stringify(data));
     }
 
-    public update(item:any, success?: SuccessCallback, error?: ErrorCallback) {
-        this.request(this.url,"PUT", success, error, JSON.stringify(item));
+    public put(data:any, success?: SuccessCallback, error?: ErrorCallback) {
+        this.request(this.url,"PUT", success, error, JSON.stringify(data));
     }
 
-    public delete(item:any, success?: SuccessCallback, error?: ErrorCallback) {
+    public delete(data:any, success?: SuccessCallback, error?: ErrorCallback) {
 
-        this.request(this.url,"DELETE", success, error, JSON.stringify(item));
+        this.request(this.url,"DELETE", success, error, JSON.stringify(data));
     }
 
   

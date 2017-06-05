@@ -167,7 +167,8 @@ export default class Charts extends Vue {
       //  this.loadDailyChart();
     }
 
-    public loadDailyChart() {
+
+     public loadChart(url:string) {
 
         // this.dailyData.datasets.forEach((value, index, arr) => {
         //     value.data.forEach((v, i, a) => {
@@ -177,7 +178,7 @@ export default class Charts extends Vue {
         //     })
         // })
         let http = new HttpService();
-        http.request(Config.ChartsUrl + "?from=" + this.fromDate + "&to=" + this.toDate, "GET", (data) => {
+        http.request(url, "GET", (data) => {
             console.log(data);
             data.datasets.forEach((value, index, arr) => {
                 value["borderColor"] = this.colors[index];
@@ -195,6 +196,32 @@ export default class Charts extends Vue {
             })
 
 
+    }
+   
+    public loadDailyChart() {
+
+        // this.dailyData.datasets.forEach((value, index, arr) => {
+        //     value.data.forEach((v, i, a) => {
+
+        //         a[i] = Math.floor(Math.random() * 15) + 15;
+
+        //     })
+        // })
+        this.loadChart(Config.ChartsUrl + "/Daily?from=" + this.fromDate + "&to=" + this.toDate);
+        
+    }
+
+     public loadHourlyChart() {
+
+        // this.dailyData.datasets.forEach((value, index, arr) => {
+        //     value.data.forEach((v, i, a) => {
+
+        //         a[i] = Math.floor(Math.random() * 15) + 15;
+
+        //     })
+        // })
+        this.loadChart(Config.ChartsUrl + "/Hourly?from=" + this.fromDate + "&to=" + this.toDate);
+        
     }
 
 }
