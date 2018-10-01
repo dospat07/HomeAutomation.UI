@@ -28,17 +28,17 @@ export default class Rooms extends Vue {
         return null;
     }
 
-    bindingSource = new BindingSource<Room>('ID');
+    bindingSource = new BindingSource<Room>('id');
     paginator: Paginator<Room>;
     dialog: MessageDialog = new MessageDialog();
 
 
 
     columns = [
-        { name: 'Name', header: 'Room' },
-        { name: 'AirCondition', header: 'Conditioner' },
+        { name: 'name', header: 'Room' },
+        { name: 'airCondition', header: 'Conditioner' },
         // { name: 'Temperature', header: 'Temperature' },
-        { name: 'NodeAddress', header: 'NodeAddress' },
+        { name: 'nodeAddress', header: 'NodeAddress' },
     ];
 
     private room = new Room();
@@ -58,7 +58,7 @@ export default class Rooms extends Vue {
         this.http.getItems((room) => this.bindingSource.add(room), () => {
             this.bindingSource.moveTo(Number(this.$route.params.roomID));
         });
-        console.log("Rooms constuctor");
+   
       
 
     }

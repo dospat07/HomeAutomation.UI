@@ -11,6 +11,7 @@ import SignalRService from '../shared/services/signalr.service';
 import Config from "../shared/services/config"
 import VueRouter from 'vue-router'
 import Http from '../shared/services/http.service'
+//import { Component } from 'vue-router/types/router';
 
 Vue.use(VueRouter);
 
@@ -42,7 +43,8 @@ export default class App extends Vue {
     }
     public start() {
 
-        this.$router.addRoutes([{ path: '/Login', component: Login }]);
+        
+        this.$router.addRoutes([{ path: '/Login', component:  (Login  as  any)}]);
         let http = new Http();
         http.request(Config.Host + "/api/isAuthorized", "GET", () => {
             this.proccessAuthorizedUser();
@@ -54,7 +56,7 @@ export default class App extends Vue {
 
     }
     private showMessage(data: any): void {
-        let message = "Command send to " + data.Conditioner;
+        let message = "Command send to " + data.conditioner;
         this.notification.show(message);
 
     }
@@ -87,12 +89,12 @@ export default class App extends Vue {
     private addRoutes(): void {
         this.$router.addRoutes([
 
-            { path: '/Rooms/:roomID?', component: Rooms },
-            { path: '/', component: Dashboard },
+            { path: '/Rooms/:roomID?', component: (Rooms as any)},
+            { path: '/', component: (Dashboard as any) },
             { path: '/Charts', component: Charts }
         ]
         );
-        console.log(this.$router)
+       
     }
 
 

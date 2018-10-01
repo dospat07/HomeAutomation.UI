@@ -6,7 +6,6 @@
   "scripts": {
     "dev": ".\\node_modules\\.bin\\webpack-dev-server --progress --content-base wwwroot --watch-content-base  ",
     "apiServer": "dotnet HomeAutomation.Engine.dll",
-     
     "build": "webpack --config webpack.config.prod.js",
     "installSignalR": "npm install signalr-client --registry https://dotnet.myget.org/f/aspnetcore-ci-dev/npm/ --save"
   },
@@ -34,11 +33,12 @@
     "webpack-dev-server": "^2.4.2"
   },
   "dependencies": {
+    "@aspnet/signalr": "^1.0.3",
     "bootstrap": "^3.3.7",
     "chart.js": "^2.6.0",
     "es6-promise": "^4.1.0",
     "jquery": "^3.1.1",
-    "signalr-client": "0.1.0-preview2-25303",
+    "tslib": "^1.9.3",
     "vue": "^2.2.4",
     "vue-class-component": "^5.0.0",
     "vue-property-decorator": "^4.0.0",

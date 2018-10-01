@@ -1,10 +1,10 @@
 export class ScheduleItem {
-    ID: number;
-    Time:string;
-    Room:string;
-    Fan:number;
-    Mode:number;
-    Temperature:number;
-    Days:string;
+    id: number;
+    time:string;
+    room:string;
+    fan:number;
+    mode:number;
+    temperature:number;
+    days:string;
    
 }

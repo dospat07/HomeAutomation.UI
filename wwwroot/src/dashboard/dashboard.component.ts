@@ -20,7 +20,7 @@ import Config from '../shared/services/config'
 export default class Dashboard extends Vue {
 
     public room = new Room();
-    bindingSource = new BindingSource<Room>('ID');
+    bindingSource = new BindingSource<Room>('id');
     private http: HttpService<Room>;
     private eventBus = new EventBus();
 
@@ -33,16 +33,16 @@ export default class Dashboard extends Vue {
         this.eventBus.on(EventType.RoomDeleted, data => this.bindingSource.delete(Number(data)));
         this.eventBus.on(EventType.RoomUpdated, data => this.bindingSource.update(data));
         this.eventBus.on(EventType.TemperatureUpdated, data => {
-            let room = this.bindingSource.findFirst(o => o.Name === data.RoomName);
+            let room = this.bindingSource.findFirst(o => o.name === data.roomName);
             if (room !== undefined) {
 
-                room.Temperature = data.Temperature;
+                room.temperature = data.temperature;
             }
         })
         this.bindingSource.currentChanged.on(room => this.onBindingSourceCurrentChanged(room));
 
         this.init();
-        this.init1();
+      
     }
 
     public onBindingSourceCurrentChanged(room: Room): void {
@@ -58,10 +58,7 @@ export default class Dashboard extends Vue {
         this.http.getItems((room) => this.bindingSource.add(room), () => this.selectFirstRoom());
     }
 
-    public init1() {
-      //  console.log("Normal ",this);
-      //  this.http.getItems((room) => this.bindingSource.add(room), () => this.selectFirstRoom());
-    }
+    
 
 
 

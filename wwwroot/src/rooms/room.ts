@@ -1,9 +1,10 @@
 export class Room {
-    Name: string;
-    NodeAddress: string;
-    ID: number;
-    AirCondition: string;
-    Temperature:number;
-    Time:Date;
+    
+    name: string;
+    nodeAddress: string;
+    id: number;
+    airCondition: string;
+    temperature:number;
+    time:Date;
 };
 

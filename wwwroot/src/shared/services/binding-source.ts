@@ -17,6 +17,7 @@ export default class BindingSource<T extends Entity> {
     constructor(private key: string, source?: T[]) {
         if (source === undefined) {
             this.dataSource = new Array<T>();
+        
         }
         else {
             this.dataSource = source;
@@ -56,8 +57,7 @@ export default class BindingSource<T extends Entity> {
 
     public moveTo(id: any) {
         let item = <T>this.dataSource.find(o => o[this.key] === id);
-        // let i = this.rooms.findIndex(o => o.ID === id);
-        //  this.bindingSource.current = this.rooms[i];
+    
         if (item != undefined)
             this.current = item;
 
@@ -88,18 +88,19 @@ export default class BindingSource<T extends Entity> {
     };
 
     public add(item: T) {
+     
         this.dataSource.push(item);
     }
 
     public update(item: T) {
+       
         let index = this.dataSource.findIndex(o => o[this.key] === item[this.key]);
+       
         if (index >= 0) {
             for (let property in item) {
                 this.dataSource[index][property] = item[property];
             }
-            //  if (this.dataSource[i] == this.selectedItem){
-            //      this.setSelectedItem(this.dataSource[i]);
-            //  }
+          
         }
     }
 

@@ -23,19 +23,19 @@ import Config from "../shared/services/config"
 export default class Schedule extends Vue {
 
 
-    bindingSource = new BindingSource<ScheduleItem>('ID');
+    bindingSource = new BindingSource<ScheduleItem>('id');
     paginator: Paginator<ScheduleItem>;
 
 
 
 
     columns = [
-        { name: 'Room', header: 'Room' },
-        { name: 'Time', header: 'Time' },
-        { name: 'Days', header: "Days" },
-        { name: 'Temperature', header: "Temp" },
-        { name: 'Fan', header: "Fan" },
-        { name: 'Mode', header: "Mode" }
+        { name: 'room', header: 'Room' },
+        { name: 'time', header: 'Time' },
+        { name: 'days', header: "Days" },
+        { name: 'temperature', header: "Temp" },
+        { name: 'fan', header: "Fan" },
+        { name: 'mode', header: "Mode" }
     ];
 
 

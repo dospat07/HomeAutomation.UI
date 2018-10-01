@@ -16,7 +16,6 @@ import EventBus, { EventType } from '../shared/services/event-bus'
     }
 
 })
-
 export default class Login extends Vue {
     user: string = "";
     password: string = "";

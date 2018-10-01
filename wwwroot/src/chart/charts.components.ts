@@ -47,25 +47,7 @@ export default class Charts extends Vue {
         }
     }
 
-    // private dailyData = {
-    //     labels: ["13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00", "23:00", "0:00", "1:00", "2:00", "3:00", "4:00", "5:00", "6:00", "7.00", "8.00", "9.00", "10.00", "11.00", "12.00"],
-    //     datasets: [{
-    //         label: 'Hall',
-    //         data: [21.5, 22, 22, 23, 21, 20.5, 19.6, 20, 21.0, 22, 21.5, 22.0, 22.0, 21.0, 20, 17.9, 18, 19, 20, 21, 22, 22, 21, 20],
-    //         borderColor: "rgba(192,195,106,1)",
-    //         backgroundColor: "rgba(192,195,106,1)",
-    //         borderWidth: 1,
-    //         fill: false
-    //     },
-    //     {
-    //         label: 'Kitchen',
-    //         data: [21.5 - 0.5, 22 - 0.5, 22 - 0.5, 23 - 0.5, 21 - 0.5, 20.5 - 0.5, 19.6 - 0.5, 20 - 0.5, 21.0 - 0.5, 22 - 0.5, 21.5 - 0.5, 22.0 - 0.5, 22.0 - 0.5, 21.0 - 0.5, 20 - 0.5, 17.9 - 0.5, 18 - 0.5, 19 - 0.5, 20 - 0.5, 21 - 0.5, 22 - 0.5, 22 - 0.5, 21 - 0.5, 20 - 0.5],
-    //         borderColor: "rgba(90,155,212,1)",
-    //         backgroundColor: "rgba(90,155,212,1)",
-    //         borderWidth: 1,
-    //         fill: false
-    //     }]
-    // }
+ 
 
     private realTimeOptions = {
         title: {
@@ -127,11 +109,11 @@ export default class Charts extends Vue {
     }
     private onTemperatureUpdated(data: any) {
 
-        let datasetID = this.map.get(data.RoomName)
+        let datasetID = this.map.get(data.roomName)
         console.log(datasetID);
         if (this.realTimeData.datasets[datasetID] === undefined) {
             this.realTimeData.datasets[datasetID] = {
-                label: data.RoomName,
+                label: data.roomName,
                 borderColor: this.colors[datasetID],
                 backgroundColor: this.colors[datasetID],
                 data: [],
@@ -141,7 +123,7 @@ export default class Charts extends Vue {
             }
         };
 
-        this.realTimeData.datasets[datasetID].data.push(data.Temperature);
+        this.realTimeData.datasets[datasetID].data.push(data.temperature);
         if (this.realTimeData.datasets[datasetID].data.length > this.realTimeData.labels.length) {
             let d = new Date();
             let label = d.getHours() + ":" + (d.getMinutes() > 9 ? d.getMinutes() : "0" + d.getMinutes());
@@ -200,26 +182,14 @@ export default class Charts extends Vue {
    
     public loadDailyChart() {
 
-        // this.dailyData.datasets.forEach((value, index, arr) => {
-        //     value.data.forEach((v, i, a) => {
-
-        //         a[i] = Math.floor(Math.random() * 15) + 15;
-
-        //     })
-        // })
+       
         this.loadChart(Config.ChartsUrl + "/Daily?from=" + this.fromDate + "&to=" + this.toDate);
         
     }
 
      public loadHourlyChart() {
 
-        // this.dailyData.datasets.forEach((value, index, arr) => {
-        //     value.data.forEach((v, i, a) => {
-
-        //         a[i] = Math.floor(Math.random() * 15) + 15;
-
-        //     })
-        // })
+     
         this.loadChart(Config.ChartsUrl + "/Hourly?from=" + this.fromDate + "&to=" + this.toDate);
         
     }
