@@ -20,7 +20,7 @@ export default class Login extends Vue {
     user: string = "";
     password: string = "";
     dialog = new MessageDialog();
-    private eventBus:EventBus = new EventBus();
+    private eventBus:EventBus = EventBus.Instance;
     public logon() {
 
 

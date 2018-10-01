@@ -40,7 +40,7 @@ export default class Schedule extends Vue {
 
 
     private http: HttpService<ScheduleItem>;
-    private eventBus = new EventBus();
+    private eventBus = EventBus.Instance;
 
     constructor() {
         super();

@@ -31,7 +31,7 @@ Vue.config.devtools = true;
 export default class App extends Vue {
 
     private signalrSerivice = new SignalRService(Config.SignalRUrl, this.onClosed);
-    private eventBus: EventBus = new EventBus();
+    private eventBus: EventBus = EventBus.Instance;
     private notification: Notification = new Notification();
     private connected: boolean = false;
     private message = "Connecting..."

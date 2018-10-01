@@ -22,7 +22,7 @@ export default class Dashboard extends Vue {
     public room = new Room();
     bindingSource = new BindingSource<Room>('id');
     private http: HttpService<Room>;
-    private eventBus = new EventBus();
+    private eventBus = EventBus.Instance;
 
 
     constructor() {

@@ -95,7 +95,7 @@ export default class Charts extends Vue {
     private fromDate = new Date().toISOString().split('T')[0];
     private toDate = new Date().toISOString().split('T')[0];
 
-    private eventBus = new EventBus();
+    private eventBus = EventBus.Instance;
     private map: Map = new Map();
     private colors = ["rgba(90,155,212,1)", "rgba(192,195,106,1)"];
 
@@ -146,19 +146,13 @@ export default class Charts extends Vue {
             data: this.realTimeData,
             options: this.realTimeOptions
         });
-      //  this.loadDailyChart();
+     
     }
 
 
      public loadChart(url:string) {
 
-        // this.dailyData.datasets.forEach((value, index, arr) => {
-        //     value.data.forEach((v, i, a) => {
-
-        //         a[i] = Math.floor(Math.random() * 15) + 15;
-
-        //     })
-        // })
+      
         let http = new HttpService();
         http.request(url, "GET", (data) => {
             console.log(data);

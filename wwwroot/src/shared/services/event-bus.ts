@@ -31,7 +31,14 @@ export default class EventBus {
 
     private static callbacks: Dictionary = {};
 
-    public constructor() {
+    private static _instance: EventBus;
+
+    public static get Instance()
+    {
+        // Do you need arguments? Make it a regular method instead.
+        return this._instance || (this._instance = new this());
+    }
+    private constructor() {
         // console.log("EventBus ")
     }
 

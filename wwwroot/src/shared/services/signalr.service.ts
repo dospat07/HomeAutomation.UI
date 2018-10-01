@@ -17,7 +17,7 @@ import * as signalR from "@aspnet/signalr";
         .withUrl(url)
         .build();
 
-        this.eventBus = new EventBus();
+        this.eventBus = EventBus.Instance;
 
          this.connection.onclose = closedCallback;
         // receives broadcast messages from a hub function, called "onEvent"

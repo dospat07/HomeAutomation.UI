@@ -43,7 +43,7 @@ export default class Rooms extends Vue {
 
     private room = new Room();
    // private http: HttpService<Room>;
-    private eventBus = new EventBus();
+    private eventBus = EventBus.Instance;
     private http= new  HttpService<Room>(Config.RoomsUrl,this.dialog);
     constructor() {
         super();
