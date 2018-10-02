@@ -141,9 +141,10 @@ export default  class  Charts extends Vue {
         this.realTimeChart.update();
     }
 
+ 
 
     public mounted() {
-
+       
         let dailyChart = document.getElementById("dailyChart");
         this.dailyChart = new Chart(dailyChart, {
             type: 'line',
@@ -198,4 +199,21 @@ export default  class  Charts extends Vue {
         
     }
 
+    /*
+    public created(){
+        window.addEventListener('resize',this.onWindowResize);
+       }
+    private windowHeight:number = window.innerHeight/2-50;
+    get height():string{
+        console.log('get',this);
+        return  this.windowHeight+'px';
+    }
+   
+
+    onWindowResize(event:any){  
+        console.log('onWindowResize',this);
+        let h = event.target.innerHeight/2-50
+        this.windowHeight=h>200?h:200;
+    }
+    */
 }
