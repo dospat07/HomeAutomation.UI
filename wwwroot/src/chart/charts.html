@@ -1,9 +1,8 @@
-<div>
 
-
-    <div style="padding-bottom: 10px">
-        <canvas id="realTimeChart"></canvas>
-    </div>
+<div>      
+   <div >
+        <canvas id="realTimeChart"  height="400px"></canvas>     
+   </div>  
     <div class="input-group col-sm-3">
         <span class="input-group-addon">From</span>
         <input type="date" class="form-control" v-model="fromDate">
@@ -13,6 +12,6 @@
         <span class="input-group-addon btn" @click="loadHourlyChart">Hourly</span>       
     </div>
     <div>
-        <canvas id="dailyChart"></canvas>
+        <canvas id="dailyChart"  height="400px"></canvas>
     </div>
 </div>

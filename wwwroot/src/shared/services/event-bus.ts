@@ -31,16 +31,14 @@ export default class EventBus {
 
     private static callbacks: Dictionary = {};
 
-    private static _instance: EventBus;
+    private static instance: EventBus;
 
     public static get Instance()
     {
-        // Do you need arguments? Make it a regular method instead.
-        return this._instance || (this._instance = new this());
+       
+        return this.instance || (this.instance = new this());
     }
-    private constructor() {
-        // console.log("EventBus ")
-    }
+    private constructor() {}
 
     public on(event: EventType, callback: Callback): void {
         let topic = EventBus.callbacks[event]

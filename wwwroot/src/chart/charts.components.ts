@@ -1,5 +1,5 @@
 import Vue from "vue"
-import { Component } from 'vue-property-decorator'
+import   Component  from 'vue-class-component'
 import EventBus, { EventType } from '../shared/services/event-bus';
 import Chart from "chart.js/dist/chart.min"
 import Map from "../shared/map"
@@ -8,14 +8,13 @@ import Config from '../shared/services/config'
 
 @Component({
     name: 'Charts',
-    template: require("./charts.html")
-
-
+    template: require("./charts.html"),   
 })
-export default class Charts extends Vue {
+export default  class  Charts extends Vue {
 
     private dailyOptions = {
         responsive: true,
+        maintainAspectRatio:false,
         tooltips: {
             mode: 'index',
             intersect: false,
@@ -50,11 +49,14 @@ export default class Charts extends Vue {
  
 
     private realTimeOptions = {
+      
+        responsive: true,
+        maintainAspectRatio:false,
         title: {
             display: true,
             text: 'RealTime Data'
         },
-        responsive: true,
+     
         tooltips: {
             mode: 'index',
             intersect: false,
@@ -63,6 +65,8 @@ export default class Charts extends Vue {
             mode: 'nearest',
             intersect: true
         },
+
+        
         scales: {
             yAxes: [{
                 ticks: {
@@ -74,17 +78,20 @@ export default class Charts extends Vue {
                 scaleLabel: {
                     display: true,
                     labelString: 'Temperature C'
-                }
+                },
+                
             }],
             xAxes: [{
                 display: true,
                 scaleLabel: {
                     display: true,
                     labelString: 'Time'
+                  
                 }
             }],
         }
     };
+
     private realTimeData = {
         labels: [],
         datasets: []
@@ -95,22 +102,23 @@ export default class Charts extends Vue {
     private fromDate = new Date().toISOString().split('T')[0];
     private toDate = new Date().toISOString().split('T')[0];
 
+  
     private eventBus = EventBus.Instance;
     private map: Map = new Map();
     private colors = ["rgba(90,155,212,1)", "rgba(192,195,106,1)"];
-
+  
 
     public constructor() {
-        super();
+      
+        super(); 
         this.eventBus.on(EventType.TemperatureUpdated, this.onTemperatureUpdated);
-
-
-
+     
     }
+
     private onTemperatureUpdated(data: any) {
 
         let datasetID = this.map.get(data.roomName)
-        console.log(datasetID);
+    
         if (this.realTimeData.datasets[datasetID] === undefined) {
             this.realTimeData.datasets[datasetID] = {
                 label: data.roomName,
@@ -119,7 +127,8 @@ export default class Charts extends Vue {
                 data: [],
                 borderWidth: 1,
                 fill: false,
-                pointRadius:1
+                pointRadius:1,
+              
             }
         };
 
@@ -131,6 +140,7 @@ export default class Charts extends Vue {
         }
         this.realTimeChart.update();
     }
+
 
     public mounted() {
 
