@@ -1,4 +1,4 @@
-<div  v-if="notification.visible"  class="alert alert-success alert-dismissible notification-position" role="alert">
+<div  v-if="notification.visible"  class="alert  alert-dismissible notification-position" v-bind:class="notification.isError ? 'alert-danger': 'alert-success'" role="alert">
     <button type="button" class="close"  @click="notification.close" ><span aria-hidden="true">&times;</span></button>
     {{notification.message}}
 </div>

@@ -39,7 +39,7 @@ export default class App extends Vue {
         super();
         this.eventBus.on(EventType.CommandSend, this.showMessage);
         this.eventBus.on(EventType.UserLogged, this.onLogin);
-
+        this.eventBus.on(EventType.Error,this.onError)
     }
     public start() {
 
@@ -54,6 +54,10 @@ export default class App extends Vue {
 
         });
 
+    }
+    private onError(data:any):void{
+     
+        this.notification.showError( data.message);
     }
     private showMessage(data: any): void {
         let message = "Command send to " + data.conditioner;

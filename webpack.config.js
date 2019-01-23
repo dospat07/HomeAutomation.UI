@@ -5,7 +5,8 @@ module.exports = {
     devServer: {
         historyApiFallback: {
             index: 'index.html'
-        }
+        },
+        host: '0.0.0.0'
     },
     devtool: "source-map",
     context: path.join(__dirname, './wwwroot/src/'),
