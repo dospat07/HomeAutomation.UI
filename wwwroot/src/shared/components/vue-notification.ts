@@ -8,18 +8,22 @@ export class Notification {
     public message = "";
     public isError = false;
     public show(message: string) {
-        this.message = message;
-        this.visible = true;
+        this.showMessage(message,false);
     }
 
     public showError(message:string)
     {
-        this.isError  =true;
-           this.show(message);     
+        this.showMessage(message,true);
     }
     public close  =()=> {
         console.log(this);
         this.visible = false;
+    }
+
+    private showMessage(message:string,error:boolean){
+        this.isError =  error;
+        this.message = message;
+        this.visible = true;
     }
 }
 

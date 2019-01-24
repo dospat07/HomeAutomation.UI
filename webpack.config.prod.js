@@ -1,6 +1,6 @@
 var path = require('path');
 var webpack = require('webpack');
-
+ 
 module.exports = {
     devServer: {
         historyApiFallback: {
@@ -49,6 +49,7 @@ module.exports = {
                 'window.$': 'jquery',
                 'window.jQuery': 'jquery'        
             }),
-        new webpack.optimize.UglifyJsPlugin({ minimize: true }),
+         new webpack.optimize.UglifyJsPlugin({ minimize: true }),
+       
     ]
 };

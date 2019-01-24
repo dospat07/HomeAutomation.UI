@@ -1,9 +1,5 @@
 
 
-// export interface HttpErrorHandle {
-//     handle(code: number, text: string): void
-
-// }
 export interface SuccessCallback {
     (data: any): void;
 }
@@ -15,37 +11,15 @@ export interface ErrorCallback {
 
 
 
-export default class HttpService<T>
-{
-    // constructor(private url: string, private errorHandle: HttpErrorHandle) {
-
-    // }
+export default class HttpService<T>{
+    
 constructor(private url?: string,private beforeSend?:{(xhr:JQueryXHR):void})
 {
 
 }
 
     
-    // public ajaxAsync(method: string, data?: any): Promise<{}> {
-    //     const promise = new Promise((resolve, reject) => {
-    //         let contentType = 'application/json';
-    //         $.ajax({
-    //             contentType: contentType,
-    //             method: method,
-    //             url: this.url,
-    //             data: data,
-    //         }).
-    //             done(result => resolve(result)).
-    //             fail(error => this.errorHandle.handle(error.status, error.statusText));
-    //     });
-    //     promise.then(
-    //         (ok) => console.log('Fulfilled ', ok),
-    //         (error) => console.log('Rejected ', error)
-    //     );
-
-    //     return promise;
-    // }
-
+    
 
    public request( url:string,method: string, successCallback?: SuccessCallback, errorCallback?: ErrorCallback, data?: any,contentType = 'application/json') {
        
@@ -88,14 +62,7 @@ constructor(private url?: string,private beforeSend?:{(xhr:JQueryXHR):void})
     }
 
 
-    // public getArray(items: Array<T>): void {
-
-    //     this.ajax('GET', (data: any) => {
-
-    //         data.forEach((element: T) => { items.push(element) })
-    //     });
-    // }
-
+    
     public getItems(onAdd: { (item: T): void }, done: { (): void }): void {
      
        this.request(this.url,'GET', (data: any) => {

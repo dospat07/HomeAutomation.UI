@@ -2,7 +2,7 @@ import Vue from 'vue'
 import { Component, Watch } from 'vue-property-decorator'
 import Http from '../shared/services/oauth-http.service'
 import Config from '../shared/services/config'
-
+import EventBus, { EventType } from '../shared/services/event-bus';
 @Component({
     name: 'Command',
     template: require("./command.html"),
@@ -28,6 +28,7 @@ export default class Command extends Vue {
     // private modeColor: string = 'red'
     private fans: Array<string> = ["Auto", "1", "2", "3", "4", "5", "6"];
     private roomID: number;
+    private eventBus = EventBus.Instance;
 
 
     public upTemperature() {
@@ -120,9 +121,17 @@ export default class Command extends Vue {
 
         }
         let http = new Http();
-     //   let r = await http.ajaxAsync("POST", JSON.stringify(data));
-        http.request( url,"POST",(r)=>{console.log(r)},(error)=>{console.log(error)},JSON.stringify(data))
-        //console.log("result", r);
+    
+        http.request( url,"POST",(r)=>{console.log(r)},(error)=>{
+            var msg = {
+                message :error.responseJSON.detail
+            }
+            console.log(msg);
+            this.eventBus.send( EventType.Error,msg)
+        },
+        JSON.stringify(data)
+        );
+      
 
     }
 
