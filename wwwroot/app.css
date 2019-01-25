@@ -59,18 +59,8 @@ thead th {
     opacity: 1;
 }
 
-/*
-@media only screen and (max-height: 600px) {
-    canvas {
-       height:250px;
-    }
+#chartGroupDatePeriod {
+    padding-bottom: 15px;
+    padding-left : 15px;
 }
 
-@media only screen and (min-height:601px) and (max-height: 1000px) {
-   
-    canvas{
-       height:400px ;
-    }
-}
-
-*/

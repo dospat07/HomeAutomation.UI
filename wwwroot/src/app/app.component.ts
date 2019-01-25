@@ -95,7 +95,8 @@ export default class App extends Vue {
 
             { path: '/Rooms/:roomID?', component: (Rooms as any)},
             { path: '/', component: (Dashboard as any) },
-            { path: '/Charts', component: Charts }
+            { path: '/Charts/:chartType', component: Charts,props: true  }
+         
         ]
         );
        

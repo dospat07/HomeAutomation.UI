@@ -1,18 +1,16 @@
 
-<div>  
-    <!-- <span>{{height}}</span>     -->
-   <div >
-        <canvas id="realTimeChart"  height="400px"></canvas>     
-   </div>  
-    <div class="input-group col-sm-3">
-        <span class="input-group-addon">From</span>
-        <input type="date" class="form-control" v-model="fromDate">
-        <span class="input-group-addon">To</span>
-        <input type="date" class="form-control" v-model="toDate">
-        <span class="input-group-addon btn" @click="loadDailyChart">Daily</span>   
-        <span class="input-group-addon btn" @click="loadHourlyChart">Hourly</span>       
-    </div>
-    <div>
-        <canvas id="dailyChart"  height="400px"></canvas>
-    </div>
+<div class="container-fluid">     
+        <div id='chartGroupDatePeriod' class="row" v-if="chartType=='Historical'">
+                <div class="input-group col-xs-3">
+                        <span class="input-group-addon">From</span>
+                        <input type="date" class="form-control" v-model="fromDate">
+                        <span class="input-group-addon">To</span>
+                        <input type="date" class="form-control" v-model="toDate">
+                        <span class="input-group-addon btn" @click="loadDailyChart">Daily</span>   
+                        <span class="input-group-addon btn" @click="loadHourlyChart">Hourly</span>       
+                </div>
+        </div>     
+        <div class="row">
+            <canvas id="chart"></canvas>
+        </div> 
 </div>

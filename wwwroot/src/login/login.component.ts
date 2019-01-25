@@ -33,17 +33,12 @@ export default class Login extends Vue {
     }
 
     private onError(error){
-        console.log(error);
+         console.log(error);
          this.dialog.showMessage("Login",error.statusText,Buttons.OK);
     }
-    private onLogon(data: any) {
-        if (data === true) {
-          this.eventBus.send(EventType.UserLogged,this.user);
-        }else{
-            this.dialog.showMessage("Login","Invalid user or password !!!",Buttons.OK);
-        }
-        
-    
+    private onLogon() {
+      
+        this.eventBus.send(EventType.UserLogged,this.user);
 
     }
 }
