@@ -8,7 +8,7 @@ export default class Config
     }
     //public static Host="http://localhost:5001";
     public static ScheduleUrl=Config.Host+"/api/Schedule";
-    public static RoomsUrl=Config.Host+"/api/Rooms";
+    public static DevicesUrl=Config.Host+"/api/Devices";
     public static ChartsUrl=Config.Host+"/api/Charts";
     public static TokenUrl ="http://localhost:5843/connect/token";
     public static SignalRUrl = Config.Host+"/socket";

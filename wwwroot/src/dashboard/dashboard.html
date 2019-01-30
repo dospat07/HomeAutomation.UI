@@ -2,12 +2,12 @@
     <div class="panel panel-primary">
         <div class="panel-body">
             <ul class="list-group">
-                <li v-for="r in bindingSource.dataItems" class="list-group-item" :class="{active:r.name == room.name}" @click="bindingSource.current=r">
-                    <div style='font-weight:bold' data-toggle='collapse' :data-target="'#room'+r.id">
+                <li v-for="r in bindingSource.dataItems" class="list-group-item" :class="{active:r.name == device.name}" @click="bindingSource.current=r">
+                    <div style='font-weight:bold' data-toggle='collapse' :data-target="'#device'+r.id">
                         <span>{{r.name}} </span>
                         <span class="pull-right">{{r.temperature}}&#8451   </span>
                     </div>
-                    <v-command class="collapse out" :id="'room'+r.id" :roomID="r.id"></v-command>
+                    <v-command class="collapse out" :id="'device'+r.id" :roomID="r.id"></v-command>
                 </li>
             </ul>
 

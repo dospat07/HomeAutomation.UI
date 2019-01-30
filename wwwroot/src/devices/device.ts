@@ -1,9 +1,9 @@
-export class Room {
+export class Device {
     
     name: string;
     nodeAddress: string;
     id: number;
-    airCondition: string;
+    appliance: string;
     temperature:number;
     time:Date;
 };

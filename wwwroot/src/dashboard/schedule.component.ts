@@ -30,7 +30,7 @@ export default class Schedule extends Vue {
 
 
     columns = [
-        { name: 'room', header: 'Room' },
+        { name: 'name', header: 'Name' },
         { name: 'time', header: 'Time' },
         { name: 'days', header: "Days" },
         { name: 'temperature', header: "Temp" },

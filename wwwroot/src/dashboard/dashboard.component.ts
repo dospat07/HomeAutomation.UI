@@ -3,7 +3,7 @@ import { Component, Watch } from 'vue-property-decorator'
 import EventBus, { EventType } from '../shared/services/event-bus';
 import BindingSource from '../shared/services/binding-source'
 import HttpService from '../shared/services/oauth-http.service'
-import { Room } from '../rooms/room'
+import {Device} from '../devices/device'
 import Command from './command.component'
 import Schedule from './schedule.component'
 import Config from '../shared/services/config'
@@ -19,43 +19,43 @@ import Config from '../shared/services/config'
 })
 export default class Dashboard extends Vue {
 
-    public room = new Room();
-    bindingSource = new BindingSource<Room>('id');
-    private http: HttpService<Room>;
+    public device = new Device();
+    bindingSource = new BindingSource<Device>('id');
+    private http: HttpService<Device>;
     private eventBus = EventBus.Instance;
 
 
     constructor() {
         super();
-        this.http = new HttpService<Room>(Config.RoomsUrl);
+        this.http = new HttpService<Device>(Config.DevicesUrl);
 
-        this.eventBus.on(EventType.RoomCreated, data => this.bindingSource.add(data));
-        this.eventBus.on(EventType.RoomDeleted, data => this.bindingSource.delete(Number(data)));
-        this.eventBus.on(EventType.RoomUpdated, data => this.bindingSource.update(data));
+        this.eventBus.on(EventType.DeviceCreated, data => this.bindingSource.add(data));
+        this.eventBus.on(EventType.DeviceDeleted, data => this.bindingSource.delete(Number(data)));
+        this.eventBus.on(EventType.DeviceUpdated, data => this.bindingSource.update(data));
         this.eventBus.on(EventType.TemperatureUpdated, data => {
-            let room = this.bindingSource.findFirst(o => o.name === data.roomName);
-            if (room !== undefined) {
+            let device = this.bindingSource.findFirst(o => o.name === data.name);
+            if (device !== undefined) {
 
-                room.temperature = data.temperature;
+                device.temperature = data.temperature;
             }
         })
-        this.bindingSource.currentChanged.on(room => this.onBindingSourceCurrentChanged(room));
+        this.bindingSource.currentChanged.on(device => this.onBindingSourceCurrentChanged(device));
 
         this.init();
       
     }
 
-    public onBindingSourceCurrentChanged(room: Room): void {
-        this.room = room;
+    public onBindingSourceCurrentChanged(device: Device): void {
+        this.device = device;
     }
-    public selectFirstRoom() {
+    public selectFirstDevice() {
 
-        this.room = this.bindingSource.dataItems[0];
+        this.device = this.bindingSource.dataItems[0];
     }
 
     public init= ()=> {
         //console.log("Arrow init",this);
-        this.http.getItems((room) => this.bindingSource.add(room), () => this.selectFirstRoom());
+        this.http.getItems((device) => this.bindingSource.add(device), () => this.selectFirstDevice());
     }
 
     

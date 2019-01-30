@@ -87,7 +87,7 @@ export default class Command extends Vue {
     }
     public set() {
 
-        console.log(this.roomID, "Fan", this.fan, 'Mode', this.mode, 'temp', this.temperature, "scheule", this.schedule, "time", this.time);
+        console.log(this.roomID, "Fan", this.fan, 'Mode', this.mode, 'temp', this.temperature, "schedule", this.schedule, "time", this.time);
         let url: string;
         let data = {
             Temperature: this.temperature,
@@ -117,7 +117,7 @@ export default class Command extends Vue {
 
         }
         else {
-            url = Config.RoomsUrl + '/' + this.roomID;
+            url = Config.DevicesUrl + '/' + this.roomID;
 
         }
         let http = new Http();

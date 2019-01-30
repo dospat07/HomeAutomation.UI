@@ -3,7 +3,7 @@ import { Component } from 'vue-property-decorator'
 
 import EventBus, { EventType } from '../shared/services/event-bus'
 import VueNotification, { Notification } from '../shared/components/vue-notification'
-import Rooms from '../rooms/rooms.component'
+import Devices from '../devices/devices.component'
 import Dashboard from '../dashboard/dashboard.component'
 import Login from '../login/login.component'
 import Charts from '../chart/charts.components'
@@ -60,7 +60,7 @@ export default class App extends Vue {
         this.notification.showError( data.message);
     }
     private showMessage(data: any): void {
-        let message = "Command send to " + data.conditioner;
+        let message = "Command send to " + data.appliance;
         this.notification.show(message);
 
     }
@@ -93,7 +93,7 @@ export default class App extends Vue {
     private addRoutes(): void {
         this.$router.addRoutes([
 
-            { path: '/Rooms/:roomID?', component: (Rooms as any)},
+            { path: '/Devices/:roomID?', component: (Devices as any)},
             { path: '/', component: (Dashboard as any) },
             { path: '/Charts/:chartType', component: Charts,props: true  }
          

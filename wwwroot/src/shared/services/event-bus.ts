@@ -11,9 +11,9 @@ export interface Dictionary {
 }
 
  export const EventType = stringEnum([
-    'RoomCreated',
-    'RoomDeleted',
-    'RoomUpdated',
+    'DeviceCreated',
+    'DeviceDeleted',
+    'DeviceUpdated',
     'TemperatureUpdated',
     'Error',
     'Search',

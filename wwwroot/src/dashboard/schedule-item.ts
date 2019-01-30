@@ -1,7 +1,7 @@
 export class ScheduleItem {
     id: number;
     time:string;
-    room:string;
+    name:string;
     fan:number;
     mode:number;
     temperature:number;
