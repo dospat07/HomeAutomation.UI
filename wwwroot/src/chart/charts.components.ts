@@ -144,11 +144,11 @@ export default  class  Charts extends Vue {
 
     private onTemperatureUpdated(data: any) {
     
-        let datasetID = this.map.get(data.roomName)
+        let datasetID = this.map.get(data.name)
     
         if (this.realTimeData.datasets[datasetID] === undefined) {
             this.realTimeData.datasets[datasetID] = {
-                label: data.roomName,
+                label: data.name,
                 borderColor: this.colors[datasetID],
                 backgroundColor: this.colors[datasetID],
                 data: [],

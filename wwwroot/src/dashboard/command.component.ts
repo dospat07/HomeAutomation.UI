@@ -7,7 +7,7 @@ import EventBus, { EventType } from '../shared/services/event-bus';
     name: 'Command',
     template: require("./command.html"),
     props: {
-        roomID: Number
+        deviceID: Number
     },
 
 })
@@ -27,7 +27,7 @@ export default class Command extends Vue {
     private modes: Array<string> = ["Off", "Heat", "Cool"];
     // private modeColor: string = 'red'
     private fans: Array<string> = ["Auto", "1", "2", "3", "4", "5", "6"];
-    private roomID: number;
+    private deviceID: number;
     private eventBus = EventBus.Instance;
 
 
@@ -87,7 +87,7 @@ export default class Command extends Vue {
     }
     public set() {
 
-        console.log(this.roomID, "Fan", this.fan, 'Mode', this.mode, 'temp', this.temperature, "schedule", this.schedule, "time", this.time);
+        console.log(this.deviceID, "Fan", this.fan, 'Mode', this.mode, 'temp', this.temperature, "schedule", this.schedule, "time", this.time);
         let url: string;
         let data = {
             Temperature: this.temperature,
@@ -101,7 +101,7 @@ export default class Command extends Vue {
 
                     Fan: this.fan,
                     Mode: this.mode,
-                    RoomID: this.roomID,
+                    DeviceID: this.deviceID,
                     Time: this.time,
                     Mon: this.mon,
                     Tue: this.tue,
@@ -117,7 +117,7 @@ export default class Command extends Vue {
 
         }
         else {
-            url = Config.DevicesUrl + '/' + this.roomID;
+            url = Config.DevicesUrl + '/' + this.deviceID;
 
         }
         let http = new Http();
