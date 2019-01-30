@@ -1,13 +1,15 @@
 var path = require('path');
 var webpack = require('webpack');
- 
+
 module.exports = {
+   
     devServer: {
         historyApiFallback: {
             index: 'index.html'
-        }
+        },
+        host: '0.0.0.0'
     },
-  
+    devtool: "source-map",
     context: path.join(__dirname, './wwwroot/src/'),
     entry: [ './main.ts'],
     output: {
@@ -49,7 +51,7 @@ module.exports = {
                 'window.$': 'jquery',
                 'window.jQuery': 'jquery'        
             }),
-         new webpack.optimize.UglifyJsPlugin({ minimize: true }),
+            new webpack.optimize.UglifyJsPlugin({ minimize: true }),
        
     ]
 };

@@ -50,6 +50,6 @@ module.exports = {
                 'window.$': 'jquery',
                 'window.jQuery': 'jquery'        
             }),
-       // new webpack.optimize.UglifyJsPlugin({ minimize: true }),
+      
     ]
 };
