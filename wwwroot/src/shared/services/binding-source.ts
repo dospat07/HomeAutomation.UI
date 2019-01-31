@@ -104,6 +104,10 @@ export default class BindingSource<T extends Entity> {
         }
     }
 
+    public addArray(items :any){
+        items.forEach((item: T) => { this.add(item)});
+    }
+
     public delete(id: any) {
         let index = this.dataSource.findIndex(o => o[this.key] === id);
         if (index >= 0) {

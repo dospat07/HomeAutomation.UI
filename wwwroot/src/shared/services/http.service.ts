@@ -9,17 +9,12 @@ export interface ErrorCallback {
 }
 
 
-
-
 export default class HttpService<T>{
     
 constructor(private url?: string,private beforeSend?:{(xhr:JQueryXHR):void})
 {
 
 }
-
-    
-    
 
    public request( url:string,method: string, successCallback?: SuccessCallback, errorCallback?: ErrorCallback, data?: any,contentType = 'application/json') {
        
@@ -62,28 +57,18 @@ constructor(private url?: string,private beforeSend?:{(xhr:JQueryXHR):void})
     }
 
 
-    
-    public getItems(onAdd: { (item: T): void }, done: { (): void }): void {
-     
-       this.request(this.url,'GET', (data: any) => {
-
-             data.forEach((element: T) => { onAdd(element) });
-             done();
-        });
-    }
-
-
     public get(success: SuccessCallback, error?: ErrorCallback, data?: any): void {
-
-       
+     
         this.request(this.url,'GET', success, error, data);
     }
 
     public post(data:any, success?: SuccessCallback, error?: ErrorCallback) {
+
         this.request(this.url,"POST", success, error, JSON.stringify(data));
     }
 
     public put(data:any, success?: SuccessCallback, error?: ErrorCallback) {
+
         this.request(this.url,"PUT", success, error, JSON.stringify(data));
     }
 

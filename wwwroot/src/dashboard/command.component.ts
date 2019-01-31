@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import { Component, Watch } from 'vue-property-decorator'
-import Http from '../shared/services/oauth-http.service'
+import Http from '../shared/services/auth-http.service'
 import Config from '../shared/services/config'
 import EventBus, { EventType } from '../shared/services/event-bus';
 @Component({

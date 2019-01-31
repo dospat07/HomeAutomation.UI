@@ -2,7 +2,7 @@
 import HttpService, { SuccessCallback, ErrorCallback } from './http.service'
 import {Dialog,Buttons} from './dialog'
 
-export default class OAuthHttp<T> extends HttpService<T>{
+export default class AuthHttp<T> extends HttpService<T>{
 
     constructor(url?: string,private dialog?:Dialog) {
         super(url, (xhr) => {

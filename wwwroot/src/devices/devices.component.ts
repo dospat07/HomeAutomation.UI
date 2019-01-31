@@ -2,7 +2,7 @@ import Vue from 'vue'
 import { Component, Watch } from 'vue-property-decorator'
 import EventBus, { EventType } from '../shared/services/event-bus';
 import { Device } from './device'
-import HttpService from '../shared/services/oauth-http.service'
+import HttpService from '../shared/services/auth-http.service'
 import BindingSource from '../shared/services/binding-source'
 import Paginator from '../shared/services/paginator'
 import VuePaginator from '../shared/components/vue-paginator'
@@ -53,11 +53,8 @@ export default class Devices extends Vue {
         this.eventBus.on(EventType.Search, data => this.onSearch(data));
         this.bindingSource.currentChanged.on(device => this.onBindingSourceCurrentChanged(device));
         this.paginator = new Paginator(this.bindingSource, 5);
-        this.http.getItems((device) => this.bindingSource.add(device), () => {
-            this.bindingSource.moveTo(Number(this.$route.params.roomID));
-        });
-   
-      
+     
+        this.http.get((items)=>{this.bindingSource.addArray(items)});
 
     }
 
@@ -79,7 +76,6 @@ export default class Devices extends Vue {
 
     public updateDevice() {
        
-        console.log(this.device);
         this.http.put(this.device);
     }
 

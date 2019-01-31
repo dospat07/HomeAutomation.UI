@@ -2,7 +2,7 @@ import Vue from 'vue'
 import { Component, Watch } from 'vue-property-decorator'
 import EventBus, { EventType } from '../shared/services/event-bus';
 import BindingSource from '../shared/services/binding-source'
-import HttpService from '../shared/services/oauth-http.service'
+import HttpService from '../shared/services/auth-http.service'
 import {Device} from '../devices/device'
 import Command from './command.component'
 import Schedule from './schedule.component'
@@ -39,24 +39,15 @@ export default class Dashboard extends Vue {
                 device.temperature = data.temperature;
             }
         })
-        this.bindingSource.currentChanged.on(device => this.onBindingSourceCurrentChanged(device));
-
-        this.init();
-      
+        this.bindingSource.currentChanged.on(device => this.onBindingSourceCurrentChanged(device)); 
+        this.http.get((items)=>{this.bindingSource.addArray(items)});
+    
     }
 
     public onBindingSourceCurrentChanged(device: Device): void {
         this.device = device;
     }
-    public selectFirstDevice() {
-
-        this.device = this.bindingSource.dataItems[0];
-    }
-
-    public init= ()=> {
-        //console.log("Arrow init",this);
-        this.http.getItems((device) => this.bindingSource.add(device), () => this.selectFirstDevice());
-    }
+     
 
     
 

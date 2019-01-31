@@ -22,7 +22,7 @@ import * as signalR from "@aspnet/signalr";
          this.connection.onclose = closedCallback;
         // receives broadcast messages from a hub function, called "onEvent"
         this.connection.on('onEvent', (msg :any) => {
-            console.log("SignalR received type " + JSON.stringify(msg));
+            console.log("SignalR received :" ,JSON.stringify(msg));
             this.eventBus.send(msg.type,msg.message);
 
         });

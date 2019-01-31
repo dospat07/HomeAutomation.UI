@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import { Component } from 'vue-property-decorator'
-import OAuthHttp from '../shared/services/oauth-http.service'
+import OAuthHttp from '../shared/services/auth-http.service'
 import Config from '../shared/services/config'
 import VueDialog from '../shared/components/vue-dialog'
 import MessageDialog, { Buttons } from '../shared/services/message-dialog'
